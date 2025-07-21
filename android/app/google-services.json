@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "338720013696",
+    "project_id": "wtho-a0dc7",
+    "storage_bucket": "wtho-a0dc7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338720013696:android:5eb2863abb8e0ccc7b5565",
+        "android_client_info": {
+          "package_name": "com.g8.wtho"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi33JpiHBP1LAHLCJrpvMMGO3d2mG7d_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

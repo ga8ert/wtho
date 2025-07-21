@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">wtho</string>
+    <string name="facebook_app_id">1433597544308490</string>
+    <string name="fb_login_protocol_scheme">fb1433597544308490</string>
+    <string name="facebook_client_token">YOUR_FACEBOOK_CLIENT_TOKEN_HERE</string>
+</resources>
