@@ -17,6 +17,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<EmailVerificationResendRequested>(_onEmailVerificationResendRequested);
     on<DeleteAccountRequested>(_onDeleteAccountRequested);
     on<GoogleLoginRequested>(_onGoogleLoginRequested);
+    on<RecoverPasswordRequested>(_onRecoverPasswordRequested);
   }
 
   Future<void> _onFacebookLoginRequested(
@@ -241,6 +242,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthSuccess(user));
     } catch (e) {
       emit(AuthFailure('Google sign-in error: $e'));
+    }
+  }
+
+  Future<void> _onRecoverPasswordRequested(
+    RecoverPasswordRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: event.email);
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        emit(AuthSuccess(user));
+      } else {
+        emit(EmailResetSent());
+      }
+    } catch (e) {
+      emit(AuthFailure('Failed to send password reset email: $e'));
     }
   }
 }

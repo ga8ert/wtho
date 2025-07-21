@@ -578,4 +578,36 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get support_us_thank_you => 'Дякуємо за вашу підтримку!';
+
+  @override
+  String get photo_not_selected => 'Фото не вибрано.';
+
+  @override
+  String get file_too_large => 'Файл занадто великий. Макс 8 МБ.';
+
+  @override
+  String get file_not_exists => 'Файл не існує або шлях порожній.';
+
+  @override
+  String get failed_to_upload_photo => 'Не вдалося завантажити фото.';
+
+  @override
+  String error_with_colon(Object error) {
+    return 'Помилка: $error';
+  }
+
+  @override
+  String get location_permission => 'Дозвіл на локацію';
+
+  @override
+  String get location_permission_message => 'Для використання цієї функції, будь ласка, дозвольте доступ до локації в налаштуваннях додатку.';
+
+  @override
+  String get open_settings => 'Відкрити налаштування';
+
+  @override
+  String get location_permission_denied => 'Дозвіл на локацію назавжди відхилено. Будь ласка, увімкніть його в налаштуваннях додатку.';
+
+  @override
+  String get with_friends => 'Тут ти можеш обрати друзів з якими ви зараз тусите';
 }

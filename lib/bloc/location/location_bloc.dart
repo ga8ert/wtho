@@ -33,7 +33,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
             country = pm.country;
           }
         } catch (e) {
-          // Якщо reverse geocoding не спрацював, залишаємо null
+          // If reverse geocoding failed, leave null
         }
         emit(LocationLoaded(pos, city: city, country: country));
       } else {

@@ -7,6 +7,7 @@ import '../../source/image_utils.dart';
 import 'profile_event.dart';
 import 'profile_state.dart';
 import 'dart:io';
+import '../../l10n/app_localizations.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(ProfileInitial()) {
@@ -60,7 +61,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     ProfilePhotoUpdated event,
     Emitter<ProfileState> emit,
   ) async {
-    // Після оновлення фото, перезавантажити профіль з Firestore
+    // After updating photo, reload profile from Firestore
     add(ProfileLoadRequested());
   }
 
@@ -76,13 +77,13 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         imageQuality: 80,
       );
       if (source == null) {
-        emit(ProfileError('Фото не вибрано.'));
+        emit(ProfileError('Photo not selected.'));
         return;
       }
       final file = File(source.path);
       final bytes = await file.length();
       if (bytes > 8 * 1024 * 1024) {
-        emit(ProfilePhotoUploadFailure('Файл занадто великий. Макс 8 МБ.'));
+        emit(ProfilePhotoUploadFailure('File is too large. Max 8 MB.'));
         return;
       }
       final compressedFile = await compressImageFile(
@@ -92,7 +93,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         maxHeight: 800,
       );
       if (compressedFile.path.isEmpty || !(await compressedFile.exists())) {
-        emit(ProfilePhotoUploadFailure('Файл не існує або шлях порожній.'));
+        emit(
+          ProfilePhotoUploadFailure('File does not exist or path is empty.'),
+        );
         return;
       }
       final compressedXFile = XFile(compressedFile.path);
@@ -100,10 +103,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       if (url != null) {
         add(ProfilePhotoUpdated(url));
       } else {
-        emit(ProfilePhotoUploadFailure('Не вдалося завантажити фото.'));
+        emit(ProfilePhotoUploadFailure('Failed to upload photo.'));
       }
     } catch (e) {
-      emit(ProfilePhotoUploadFailure('Помилка: $e'));
+      emit(ProfilePhotoUploadFailure('Error: $e'));
     }
   }
 

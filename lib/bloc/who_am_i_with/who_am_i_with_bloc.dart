@@ -71,18 +71,18 @@ class WhoAmIWithBloc extends Bloc<WhoAmIWithEvent, WhoAmIWithState> {
       try {
         final currentUid = FirebaseAuth.instance.currentUser?.uid;
         if (currentUid == null) throw Exception('Not authenticated');
-        // Зчитати попередню компанію
+        // Read previous company
         final userDoc = await FirebaseFirestore.instance
             .collection('users')
             .doc(currentUid)
             .get();
         final oldWithNow =
             (userDoc.data()?['withNow'] as List?)?.cast<String>() ?? [];
-        // Гарантувати, що організатор не потрапляє у withNow
+        // Ensure organizer doesn't get into withNow
         final newWithNow = loaded.selectedFriends
             .where((id) => id != currentUid)
             .toList();
-        // Видалити моє id у тих, кого видалили
+        // Remove my id from those who were removed
         final removed = oldWithNow
             .where((uid) => !newWithNow.contains(uid))
             .toList();
@@ -92,14 +92,14 @@ class WhoAmIWithBloc extends Bloc<WhoAmIWithEvent, WhoAmIWithState> {
             'withNow': FieldValue.arrayRemove([currentUid]),
           });
         }
-        // Додати моє id у тих, кого додали (і залишили)
+        // Add my id to those who were added (and kept)
         for (final uid in newWithNow) {
           final doc = FirebaseFirestore.instance.collection('users').doc(uid);
           await doc.update({
             'withNow': FieldValue.arrayUnion([currentUid]),
           });
         }
-        // Якщо видалив усіх — у всіх з oldWithNow видалити моє id
+        // If removed everyone — remove my id from everyone in oldWithNow
         if (newWithNow.isEmpty) {
           for (final uid in oldWithNow) {
             final doc = FirebaseFirestore.instance.collection('users').doc(uid);
@@ -108,7 +108,7 @@ class WhoAmIWithBloc extends Bloc<WhoAmIWithEvent, WhoAmIWithState> {
             });
           }
         }
-        // Оновити своє withNow
+        // Update my withNow
         await FirebaseFirestore.instance
             .collection('users')
             .doc(currentUid)

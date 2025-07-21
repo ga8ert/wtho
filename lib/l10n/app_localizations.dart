@@ -1204,6 +1204,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Thank you for your support!'**
   String get support_us_thank_you;
+
+  /// No description provided for @photo_not_selected.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo not selected.'**
+  String get photo_not_selected;
+
+  /// No description provided for @file_too_large.
+  ///
+  /// In en, this message translates to:
+  /// **'File is too large. Max 8 MB.'**
+  String get file_too_large;
+
+  /// No description provided for @file_not_exists.
+  ///
+  /// In en, this message translates to:
+  /// **'File does not exist or path is empty.'**
+  String get file_not_exists;
+
+  /// No description provided for @failed_to_upload_photo.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to upload photo.'**
+  String get failed_to_upload_photo;
+
+  /// No description provided for @error_with_colon.
+  ///
+  /// In en, this message translates to:
+  /// **'Error: {error}'**
+  String error_with_colon(Object error);
+
+  /// No description provided for @location_permission.
+  ///
+  /// In en, this message translates to:
+  /// **'Location Permission'**
+  String get location_permission;
+
+  /// No description provided for @location_permission_message.
+  ///
+  /// In en, this message translates to:
+  /// **'To use this feature, please allow location access in the app settings.'**
+  String get location_permission_message;
+
+  /// No description provided for @open_settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Settings'**
+  String get open_settings;
+
+  /// No description provided for @location_permission_denied.
+  ///
+  /// In en, this message translates to:
+  /// **'Location permission is permanently denied. Please enable it in the app settings.'**
+  String get location_permission_denied;
+
+  /// No description provided for @with_friends.
+  ///
+  /// In en, this message translates to:
+  /// **'Here you can choose the friends you are currently hanging out with.'**
+  String get with_friends;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

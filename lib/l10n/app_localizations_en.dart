@@ -578,4 +578,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get support_us_thank_you => 'Thank you for your support!';
+
+  @override
+  String get photo_not_selected => 'Photo not selected.';
+
+  @override
+  String get file_too_large => 'File is too large. Max 8 MB.';
+
+  @override
+  String get file_not_exists => 'File does not exist or path is empty.';
+
+  @override
+  String get failed_to_upload_photo => 'Failed to upload photo.';
+
+  @override
+  String error_with_colon(Object error) {
+    return 'Error: $error';
+  }
+
+  @override
+  String get location_permission => 'Location Permission';
+
+  @override
+  String get location_permission_message => 'To use this feature, please allow location access in the app settings.';
+
+  @override
+  String get open_settings => 'Open Settings';
+
+  @override
+  String get location_permission_denied => 'Location permission is permanently denied. Please enable it in the app settings.';
+
+  @override
+  String get with_friends => 'Here you can choose the friends you are currently hanging out with.';
 }

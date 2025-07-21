@@ -191,5 +191,15 @@
   "support_us_title": "Support our project!",
   "support_us_body": "If you like our app, you can support us and help us grow. Your support motivates us to make the app even better!",
   "support_us_action": "Support",
-  "support_us_thank_you": "Thank you for your support!"
+  "support_us_thank_you": "Thank you for your support!",
+  "photo_not_selected": "Photo not selected.",
+  "file_too_large": "File is too large. Max 8 MB.",
+  "file_not_exists": "File does not exist or path is empty.",
+  "failed_to_upload_photo": "Failed to upload photo.",
+  "error_with_colon": "Error: {error}",
+  "location_permission": "Location Permission",
+  "location_permission_message": "To use this feature, please allow location access in the app settings.",
+  "open_settings": "Open Settings",
+  "location_permission_denied": "Location permission is permanently denied. Please enable it in the app settings.",
+  "with_friends":"Here you can choose the friends you are currently hanging out with."
 }

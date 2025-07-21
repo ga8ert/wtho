@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:io' show Platform;
+import '../l10n/app_localizations.dart';
 
 class GeolocationService {
   static Future<Position?> getCurrentPosition({BuildContext? context}) async {
@@ -13,14 +14,14 @@ class GeolocationService {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Для Android: показати діалог з поясненням
+        // For Android: show dialog with explanation
         if (!kIsWeb && Platform.isAndroid && context != null) {
           await showDialog(
             context: context,
             builder: (ctx) => AlertDialog(
-              title: const Text('Location Permission'),
-              content: const Text(
-                'To use this feature, please allow location access in the app settings.',
+              title: Text(AppLocalizations.of(context)!.location_permission),
+              content: Text(
+                AppLocalizations.of(context)!.location_permission_message,
               ),
               actions: [
                 TextButton(
@@ -28,11 +29,11 @@ class GeolocationService {
                     Navigator.of(ctx).pop();
                     await Geolocator.openAppSettings();
                   },
-                  child: const Text('Open Settings'),
+                  child: Text(AppLocalizations.of(context)!.open_settings),
                 ),
                 TextButton(
                   onPressed: () => Navigator.of(ctx).pop(),
-                  child: const Text('Cancel'),
+                  child: Text(AppLocalizations.of(context)!.cancel),
                 ),
               ],
             ),
@@ -42,14 +43,14 @@ class GeolocationService {
       }
     }
     if (permission == LocationPermission.deniedForever) {
-      // Для Android: показати діалог з поясненням
+      // For Android: show dialog with explanation
       if (!kIsWeb && Platform.isAndroid && context != null) {
         await showDialog(
           context: context,
           builder: (ctx) => AlertDialog(
-            title: const Text('Location Permission'),
-            content: const Text(
-              'Location permission is permanently denied. Please enable it in the app settings.',
+            title: Text(AppLocalizations.of(context)!.location_permission),
+            content: Text(
+              AppLocalizations.of(context)!.location_permission_denied,
             ),
             actions: [
               TextButton(
@@ -57,11 +58,11 @@ class GeolocationService {
                   Navigator.of(ctx).pop();
                   await Geolocator.openAppSettings();
                 },
-                child: const Text('Open Settings'),
+                child: Text(AppLocalizations.of(context)!.open_settings),
               ),
               TextButton(
                 onPressed: () => Navigator.of(ctx).pop(),
-                child: const Text('Cancel'),
+                child: Text(AppLocalizations.of(context)!.cancel),
               ),
             ],
           ),

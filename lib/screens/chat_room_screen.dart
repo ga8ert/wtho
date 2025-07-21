@@ -39,7 +39,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
     final userIds = List<String>.from(chatDoc.data()?['userIds'] ?? []);
     if (userIds.isEmpty) return;
     if (_lastUserIds.join(',') == userIds.join(','))
-      return; // не оновлювати, якщо не змінились
+      return; // don't update if not changed
     final usersSnap = await FirebaseFirestore.instance
         .collection('users')
         .where('uid', whereIn: userIds)

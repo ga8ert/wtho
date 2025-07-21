@@ -28,7 +28,7 @@ class EventDetailState extends Equatable {
   final bool declineSuccess;
   final UserProfile? authorProfile;
   final List<UserProfile> participantProfiles;
-  final List<List<UserProfile>> joinRequestProfiles; // групи профілів
+  final List<List<UserProfile>> joinRequestProfiles; // profile groups
   final String? eventType;
   final double? lat;
   final double? lng;
@@ -165,13 +165,13 @@ class EventDetailCubit extends Cubit<EventDetailState> {
         final data = doc.docs.first.data();
         final authorProfile = await _fetchUserProfile(authorId);
         final userIds = List<String>.from(data['userIds'] ?? []);
-        // joinRequests: масив об'єктів {uids, timestamp} або масив UID (старий формат)
+        // joinRequests: array of objects {uids, timestamp} or array of UIDs (old format)
         final rawJoinRequests = data['joinRequests'] ?? [];
         List<Map<String, dynamic>> joinRequests = [];
         if (rawJoinRequests.isNotEmpty && rawJoinRequests[0] is Map) {
           joinRequests = List<Map<String, dynamic>>.from(rawJoinRequests);
         } else if (rawJoinRequests.isNotEmpty && rawJoinRequests[0] is String) {
-          // старий формат: масив UID
+          // old format: array of UIDs
           for (final uid in rawJoinRequests) {
             joinRequests.add({
               'uids': [uid],
@@ -223,14 +223,14 @@ class EventDetailCubit extends Cubit<EventDetailState> {
     try {
       final user = FirebaseAuth.instance.currentUser;
       if (user == null) throw Exception('Not authenticated');
-      // Отримати компанію (withNow) поточного користувача
+      // Get company (withNow) of current user
       final userDoc = await FirebaseFirestore.instance
           .collection('users')
           .doc(user.uid)
           .get();
       final withNow =
           (userDoc.data()?['withNow'] as List?)?.cast<String>() ?? [];
-      // Для joinRequest: завжди user.uid + withNow (без дублікатів)
+      // For joinRequest: always user.uid + withNow (without duplicates)
       final withNowToRequest = [
         user.uid,
         ...withNow.where((id) => id != user.uid),
@@ -243,7 +243,7 @@ class EventDetailCubit extends Cubit<EventDetailState> {
           .get();
       if (doc.docs.isNotEmpty) {
         final ref = doc.docs.first.reference;
-        // Додаємо як об'єкт
+        // Add as object
         final joinRequestObj = {
           'uids': withNowToRequest,
           'timestamp': DateTime.now().toIso8601String(),
@@ -274,9 +274,9 @@ class EventDetailCubit extends Cubit<EventDetailState> {
         final ref = doc.docs.first.reference;
         await ref.update({
           'userIds': FieldValue.arrayUnion(uids),
-          // joinRequests: видалити заявку з цими uids
+          // joinRequests: remove request with these uids
         });
-        // Видалити заявку з joinRequests вручну (Firestore не вміє arrayRemove для об'єктів)
+        // Remove request from joinRequests manually (Firestore doesn't support arrayRemove for objects)
         final eventData = doc.docs.first.data();
         List<dynamic> joinRequests = eventData['joinRequests'] ?? [];
         joinRequests.removeWhere(
@@ -286,7 +286,7 @@ class EventDetailCubit extends Cubit<EventDetailState> {
               uids.toSet().containsAll(List<String>.from(req['uids'] ?? [])),
         );
         await ref.update({'joinRequests': joinRequests});
-        // --- ЧАТ ---
+        // --- CHAT ---
         final eventId = doc.docs.first.id;
         final chatDoc = await FirebaseFirestore.instance
             .collection('chats')
@@ -300,10 +300,10 @@ class EventDetailCubit extends Cubit<EventDetailState> {
         final eventTitleStr = eventData['title'] ?? '';
         final eventEndTimeStr = eventData['endDateTime'];
         if (chatDoc.exists) {
-          // Оновити userIds у чаті
+          // Update userIds in chat
           await chatDoc.reference.update({'userIds': allUserIds});
         } else {
-          // Створити чат
+          // Create chat
           await FirebaseFirestore.instance
               .collection('chats')
               .doc(eventId)
@@ -337,7 +337,7 @@ class EventDetailCubit extends Cubit<EventDetailState> {
           .get();
       if (doc.docs.isNotEmpty) {
         final ref = doc.docs.first.reference;
-        // Видалити заявку з joinRequests вручну
+        // Remove request from joinRequests manually
         final eventData = doc.docs.first.data();
         List<dynamic> joinRequests = eventData['joinRequests'] ?? [];
         joinRequests.removeWhere(

@@ -22,18 +22,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     emit(HomeLoading());
     try {
-      // 1. Отримуємо геолокацію
+      // 1. Get geolocation
       final pos = await Geolocator.getCurrentPosition();
       final user = FirebaseAuth.instance.currentUser;
       final uid = user?.uid ?? '';
-      // 2. Слухаємо івенти з Firestore (разово, не стрім)
+      // 2. Listen to events from Firestore (once, not stream)
       final snap = await FirebaseFirestore.instance
           .collection('events')
           .orderBy('createdAt', descending: true)
           .get();
       final docs = snap.docs;
       final now = DateTime.now();
-      // 3. Фільтруємо івенти, які ще не завершились
+      // 3. Filter events that haven't ended yet
       final events = docs
           .map((doc) {
             final data = doc.data();
@@ -47,7 +47,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             return endDt == null || endDt.isAfter(now);
           })
           .toList();
-      // 4. Додаємо відстань до кожного івенту
+      // 4. Add distance to each event
       for (final event in events) {
         final lat = event['latitude'];
         final lng = event['longitude'];
@@ -62,7 +62,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           event['distance'] = double.infinity;
         }
       }
-      // 5. Додаємо автора (user) до event['author'] для фільтрації за віком
+      // 5. Add author (user) to event['author'] for age filtering
       for (final event in events) {
         final authorId = event['authorId'];
         if (authorId != null) {
@@ -75,7 +75,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           }
         }
       }
-      // 6. Фільтрація за radius, type, age (автор)
+      // 6. Filter by radius, type, age (author)
       List<Map<String, dynamic>> filteredEvents;
       final isDefaultFilters =
           _ageRange == const RangeValues(0, 100) &&
@@ -106,21 +106,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           return true;
         }).toList();
       }
-      // 7. Розділяємо на "мої" та "інші"
+      // 7. Split into "mine" and "others"
       final myEvents = filteredEvents
           .where((e) => e['authorId'] == uid)
           .toList();
       final otherEvents = filteredEvents
           .where((e) => e['authorId'] != uid)
           .toList();
-      // 8. Сортуємо кожну групу за відстанню
+      // 8. Sort each group by distance
       myEvents.sort(
         (a, b) => (a['distance'] as double).compareTo(b['distance'] as double),
       );
       otherEvents.sort(
         (a, b) => (a['distance'] as double).compareTo(b['distance'] as double),
       );
-      // 9. Об'єднуємо
+      // 9. Combine
       final sortedEvents = [...myEvents, ...otherEvents];
       emit(
         HomeLoadedEvents(

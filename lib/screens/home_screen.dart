@@ -24,6 +24,8 @@ import '../widgets/filter_button.dart';
 import 'who_am_i_with_screen.dart';
 import 'chat_screen.dart';
 import '../bloc/chat/chat_bloc.dart';
+import '../services/geolocation_service.dart';
+import 'package:geolocator/geolocator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<MeetingCardData> cards = [];
   bool _emailDialogShown = false;
   int _selectedTab = 0; // Always start with events
+  bool _locationDialogShown = false;
 
   // --- Meeting types ---
   static const Map<String, String> _typeNameKeys = {
@@ -77,8 +80,48 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _selectedTab = 0; // Always start with events
+    _checkLocationPermission();
     context.read<HomeBloc>().add(LoadEventsWithLocation());
     context.read<AuthBloc>().add(EmailVerificationCheckRequested());
+  }
+
+  Future<void> _checkLocationPermission() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied ||
+        permission == LocationPermission.deniedForever) {
+      if (!_locationDialogShown) {
+        _locationDialogShown = true;
+        if (!mounted) return;
+        await showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => AlertDialog(
+            title: Text(AppLocalizations.of(context)!.location_permission),
+            content: Text(
+              AppLocalizations.of(context)!.location_permission_message,
+            ),
+            actions: [
+              TextButton(
+                onPressed: () async {
+                  await Geolocator.requestPermission();
+                  Navigator.of(context).pop();
+                  _locationDialogShown = false;
+                  await Future.delayed(const Duration(milliseconds: 100));
+                  setState(() {});
+                  context.read<HomeBloc>().add(LoadEventsWithLocation());
+                  _checkLocationPermission();
+                },
+                child: Text(AppLocalizations.of(context)!.open_settings),
+              ),
+            ],
+          ),
+        );
+      }
+    } else {
+      // Якщо дозвіл вже надано, оновити екран і події
+      setState(() {});
+      context.read<HomeBloc>().add(LoadEventsWithLocation());
+    }
   }
 
   void _openProfile() async {
@@ -114,7 +157,11 @@ class _HomeScreenState extends State<HomeScreen> {
     final user = FirebaseAuth.instance.currentUser;
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is EmailVerificationError) {
+        final user = FirebaseAuth.instance.currentUser;
+        final isGoogleUser =
+            user?.providerData.any((p) => p.providerId == 'google.com') ??
+            false;
+        if (state is EmailVerificationError && !isGoogleUser) {
           if (!_emailDialogShown) {
             _emailDialogShown = true;
             showDialog(
@@ -196,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (currentUser == null) {
                       return IconButton(
                         icon: Icon(CupertinoIcons.person_add),
-                        tooltip: AppLocalizations.of(context)!.who_am_i_with,
+                        tooltip: AppLocalizations.of(context)!.with_friends,
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
@@ -225,7 +272,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 : CupertinoIcons.person_add,
                             color: CustomColors.blue,
                           ),
-                          tooltip: AppLocalizations.of(context)!.who_am_i_with,
+                          tooltip: AppLocalizations.of(context)!.with_friends,
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -307,7 +354,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return const Center(child: CircularProgressIndicator());
                       } else {
                         return Center(
-                          child: Text(AppLocalizations.of(context)!.no_data),
+                          child: CircularProgressIndicator.adaptive(),
                         );
                       }
                     },
@@ -346,7 +393,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: EventCard(
                                   id:
                                       event['id'] ??
-                                      event['docId'], // додано явну передачу id
+                                      event['docId'], // added explicit id passing
                                   title: event['title'] ?? '',
                                   place: event['place'] ?? '',
                                   authorId: event['authorId'] ?? '',

@@ -29,7 +29,11 @@ class WhoAmIWithScreen extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: Text(AppLocalizations.of(context)!.who_am_i_with),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            iconTheme: const IconThemeData(color: Colors.black),
           ),
+          backgroundColor: Colors.white,
           body: BlocBuilder<WhoAmIWithBloc, WhoAmIWithState>(
             builder: (context, state) {
               if (state is WhoAmIWithLoading) {
@@ -55,9 +59,30 @@ class WhoAmIWithScreen extends StatelessWidget {
                           labelText: AppLocalizations.of(
                             context,
                           )!.search_by_nickname,
-                          prefixIcon: Icon(Icons.search),
-                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Colors.grey[700],
+                          ),
+                          labelStyle: TextStyle(color: Colors.grey[700]),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide(color: Colors.grey[300]!),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide(color: Colors.grey[300]!),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide(
+                              color: Colors.grey[700]!,
+                              width: 2,
+                            ),
+                          ),
+                          fillColor: Color(0xFFF3F3F3),
+                          filled: true,
                         ),
+                        style: TextStyle(color: Colors.grey[700]),
                         onChanged: (value) {
                           context.read<WhoAmIWithBloc>().add(
                             UpdateSearchQueryEvent(value),
@@ -65,11 +90,25 @@ class WhoAmIWithScreen extends StatelessWidget {
                         },
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+                      child: Text(
+                        AppLocalizations.of(context)!.with_friends,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.blue[700],
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
                     Expanded(
                       child: filteredFriends.isEmpty
                           ? Center(
                               child: Text(
                                 AppLocalizations.of(context)!.no_friends_found,
+                                style: const TextStyle(color: Colors.black54),
                               ),
                             )
                           : ListView.builder(
@@ -86,8 +125,12 @@ class WhoAmIWithScreen extends StatelessWidget {
                                   },
                                   child: Card(
                                     color: isSelected
-                                        ? Colors.blue[100]
+                                        ? Colors.blue[50]
                                         : Colors.white,
+                                    elevation: 2,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16),
+                                    ),
                                     child: ListTile(
                                       leading: CircleAvatar(
                                         backgroundImage:
@@ -150,6 +193,11 @@ class WhoAmIWithScreen extends StatelessWidget {
                   },
                   label: Text(AppLocalizations.of(context)!.save),
                   icon: Icon(Icons.save),
+                  backgroundColor: Colors.blue,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
                 );
               }
               return SizedBox.shrink();

@@ -43,3 +43,5 @@ class DeleteAccountError extends AuthState {
   final String message;
   DeleteAccountError(this.message);
 }
+
+class EmailResetSent extends AuthState {}

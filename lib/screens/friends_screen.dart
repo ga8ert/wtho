@@ -158,7 +158,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                     final userMap = state.results[index];
                     final isSelf = userMap['uid'] == user?.uid;
                     final isAlreadyFriend = false;
-                    // Додано: перевірка outgoing friend request
+                    // Added: check outgoing friend request
                     final hasOutgoingRequest =
                         (userMap['friendRequests'] as List?)?.contains(
                           user?.uid,

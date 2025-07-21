@@ -42,3 +42,8 @@ class EmailVerificationResendRequested extends AuthEvent {}
 class DeleteAccountRequested extends AuthEvent {}
 
 class GoogleLoginRequested extends AuthEvent {}
+
+class RecoverPasswordRequested extends AuthEvent {
+  final String email;
+  RecoverPasswordRequested({required this.email});
+}

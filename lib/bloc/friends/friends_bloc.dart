@@ -95,7 +95,7 @@ class FriendsBloc extends Bloc<FriendsEvent, FriendsState> {
       final fromUserRef = FirebaseFirestore.instance
           .collection('users')
           .doc(event.fromUid);
-      // Додаємо один одного у friends
+      // Add each other to friends
       await userRef.update({
         'friends': FieldValue.arrayUnion([event.fromUid]),
         'friendRequests': FieldValue.arrayRemove([event.fromUid]),
