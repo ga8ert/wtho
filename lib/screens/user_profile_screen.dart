@@ -4,6 +4,7 @@ import '../bloc/user_profile/user_profile_bloc.dart';
 import '../bloc/user_profile/user_profile_event.dart';
 import '../bloc/user_profile/user_profile_state.dart';
 import '../l10n/app_localizations.dart';
+import 'dart:io';
 
 class UserProfileScreen extends StatelessWidget {
   final String userId;
@@ -25,9 +26,14 @@ class UserProfileScreen extends StatelessWidget {
   }
 }
 
-class _UserProfileBody extends StatelessWidget {
+class _UserProfileBody extends StatefulWidget {
   final String? currentUserId;
   const _UserProfileBody({this.currentUserId});
+  @override
+  State<_UserProfileBody> createState() => _UserProfileBodyState();
+}
+
+class _UserProfileBodyState extends State<_UserProfileBody> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UserProfileBloc, UserProfileState>(
@@ -72,14 +78,64 @@ class _UserProfileBody extends StatelessWidget {
                       '${AppLocalizations.of(context)!.age}: ${user['age'] ?? '-'}',
                       style: const TextStyle(fontSize: 16),
                     ),
+                    if ((user['about'] ?? '').toString().isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      Text(
+                        user['about'],
+                        style: const TextStyle(
+                          fontSize: 15,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                    if (user['photoUrls'] != null &&
+                        (user['photoUrls'] as List).isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: (user['photoUrls'] as List).length > 3
+                            ? 3
+                            : (user['photoUrls'] as List).length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 6,
+                              crossAxisSpacing: 6,
+                              childAspectRatio: 1,
+                            ),
+                        itemBuilder: (context, i) {
+                          final url = (user['photoUrls'] as List)[i];
+                          return GestureDetector(
+                            onTap: () {
+                              if (!mounted) return;
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                      _FullScreenImageViewer(imageUrl: url),
+                                ),
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: url.toString().startsWith('http')
+                                  ? Image.network(url, fit: BoxFit.cover)
+                                  : Image.file(File(url), fit: BoxFit.cover),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                     const SizedBox(height: 24),
-                    if (!state.isFriend && user['uid'] != currentUserId)
+                    if (!state.isFriend && user['uid'] != widget.currentUserId)
                       ElevatedButton(
                         onPressed: () {
+                          if (!mounted) return;
                           context.read<UserProfileBloc>().add(
                             AddFriend(
                               user['uid'],
-                              currentUserId: currentUserId,
+                              currentUserId: widget.currentUserId,
                             ),
                           );
                         },
@@ -101,6 +157,28 @@ class _UserProfileBody extends StatelessWidget {
         }
         return const SizedBox.shrink();
       },
+    );
+  }
+}
+
+class _FullScreenImageViewer extends StatelessWidget {
+  final String imageUrl;
+  const _FullScreenImageViewer({required this.imageUrl});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.white),
+        elevation: 0,
+      ),
+      body: Center(
+        child: imageUrl.startsWith('http')
+            ? Image.network(imageUrl, fit: BoxFit.contain)
+            : Image.file(File(imageUrl), fit: BoxFit.contain),
+      ),
     );
   }
 }

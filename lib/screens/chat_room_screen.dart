@@ -44,6 +44,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
         .collection('users')
         .where('uid', whereIn: userIds)
         .get();
+    if (!mounted) return;
     setState(() {
       userProfiles = {for (var doc in usersSnap.docs) doc['uid']: doc.data()};
       _lastUserIds = userIds;

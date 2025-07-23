@@ -26,6 +26,7 @@ class EventFormState extends Equatable {
   final List<File> selectedPhotos;
   final List<String> photoUrls;
   final bool friendPickerOpened;
+  final bool isChatPublic;
 
   const EventFormState({
     this.title = '',
@@ -46,6 +47,7 @@ class EventFormState extends Equatable {
     this.selectedPhotos = const [],
     this.photoUrls = const [],
     this.friendPickerOpened = false,
+    this.isChatPublic = false,
   });
 
   EventFormState copyWith({
@@ -67,6 +69,7 @@ class EventFormState extends Equatable {
     List<File>? selectedPhotos,
     List<String>? photoUrls,
     bool? friendPickerOpened,
+    bool? isChatPublic,
     bool clearTitleError = false,
     bool clearPlaceError = false,
     bool clearDescriptionError = false,
@@ -92,6 +95,7 @@ class EventFormState extends Equatable {
       selectedPhotos: selectedPhotos ?? this.selectedPhotos,
       photoUrls: photoUrls ?? this.photoUrls,
       friendPickerOpened: friendPickerOpened ?? this.friendPickerOpened,
+      isChatPublic: isChatPublic ?? this.isChatPublic,
     );
   }
 
@@ -115,6 +119,7 @@ class EventFormState extends Equatable {
     selectedPhotos,
     photoUrls,
     friendPickerOpened,
+    isChatPublic,
   ];
 }
 
@@ -154,6 +159,8 @@ class EventFormCubit extends Cubit<EventFormState> {
       emit(state.copyWith(startDateTime: dt, error: null));
   void setEndDateTime(DateTime dt) =>
       emit(state.copyWith(endDateTime: dt, error: null));
+
+  void setIsChatPublic(bool v) => emit(state.copyWith(isChatPublic: v));
 
   bool _validate() {
     String? titleError;
@@ -258,21 +265,28 @@ class EventFormCubit extends Cubit<EventFormState> {
         'startDateTime': state.startDateTime?.toIso8601String(),
         'endDateTime': state.endDateTime?.toIso8601String(),
         'createdAt': DateTime.now().toIso8601String(),
-      });
-      // --- Create chat for event ---
-      final allUserIds = {...userIds, authorId}.toList();
-      await FirebaseFirestore.instance.collection('chats').doc(docRef.id).set({
-        'eventId': docRef.id,
-        'eventTitle': state.title,
-        'userIds': allUserIds,
-        'authorId': authorId,
-        'eventEndTime': state.endDateTime?.toIso8601String(),
-        'createdAt': DateTime.now().toIso8601String(),
+        'isChatPublic': state.isChatPublic,
       });
       List<String> photoUrls = [];
       if (state.selectedPhotos.isNotEmpty) {
         photoUrls = await uploadPhotos(docRef.id);
         await docRef.update({'photos': photoUrls});
+      }
+      // Створювати чат одразу тільки якщо isChatPublic == true
+      if (state.isChatPublic) {
+        final allUserIds = {...userIds, authorId}.toList();
+        await FirebaseFirestore.instance
+            .collection('chats')
+            .doc(docRef.id)
+            .set({
+              'eventId': docRef.id,
+              'eventTitle': state.title,
+              'userIds': allUserIds,
+              'authorId': authorId,
+              'eventEndTime': state.endDateTime?.toIso8601String(),
+              'createdAt': DateTime.now().toIso8601String(),
+              'isPublic': true,
+            });
       }
       emit(
         state.copyWith(submitting: false, success: true, photoUrls: photoUrls),

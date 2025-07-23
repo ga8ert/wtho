@@ -10,3 +10,23 @@ class ProfilePhotoUpdated extends ProfileEvent {
 }
 
 class ProfilePhotoPickRequested extends ProfileEvent {}
+
+class EditProfileLoadRequested extends ProfileEvent {}
+
+class EditProfileFieldChanged extends ProfileEvent {
+  final String field;
+  final dynamic value;
+  EditProfileFieldChanged(this.field, this.value);
+}
+
+class EditProfilePhotoAdded extends ProfileEvent {
+  final String photoPath;
+  EditProfilePhotoAdded(this.photoPath);
+}
+
+class EditProfilePhotoRemoved extends ProfileEvent {
+  final int index;
+  EditProfilePhotoRemoved(this.index);
+}
+
+class EditProfileSubmitted extends ProfileEvent {}

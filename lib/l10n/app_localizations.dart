@@ -701,377 +701,365 @@ abstract class AppLocalizations {
   /// **'Friend request sent'**
   String get friend_request_sent;
 
-  /// No description provided for @event_type_aquapark.
+  /// No description provided for @event_type_social_bar.
   ///
   /// In en, this message translates to:
-  /// **'Aquapark'**
-  String get event_type_aquapark;
+  /// **'Bar hangout'**
+  String get event_type_social_bar;
 
-  /// No description provided for @event_type_aquapark_emoji.
+  /// No description provided for @event_type_social_bar_emoji.
   ///
   /// In en, this message translates to:
-  /// **'💦🛟👙'**
-  String get event_type_aquapark_emoji;
+  /// **'🎉🍻'**
+  String get event_type_social_bar_emoji;
 
-  /// No description provided for @event_type_art_gallery.
+  /// No description provided for @event_type_social_hangout.
   ///
   /// In en, this message translates to:
-  /// **'Art gallery'**
-  String get event_type_art_gallery;
+  /// **'Just hang out'**
+  String get event_type_social_hangout;
 
-  /// No description provided for @event_type_art_gallery_emoji.
+  /// No description provided for @event_type_social_hangout_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🖼️🎨🧑‍🎨'**
-  String get event_type_art_gallery_emoji;
+  /// **'🕺💃'**
+  String get event_type_social_hangout_emoji;
 
-  /// No description provided for @event_type_bbq.
+  /// No description provided for @event_type_social_neighbors.
   ///
   /// In en, this message translates to:
-  /// **'Barbecue'**
-  String get event_type_bbq;
+  /// **'Neighbors meetup'**
+  String get event_type_social_neighbors;
 
-  /// No description provided for @event_type_bbq_emoji.
+  /// No description provided for @event_type_social_neighbors_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🍖🔥🪵'**
-  String get event_type_bbq_emoji;
+  /// **'🏢🤝'**
+  String get event_type_social_neighbors_emoji;
 
-  /// No description provided for @event_type_bowling.
+  /// No description provided for @event_type_social_coffee.
   ///
   /// In en, this message translates to:
-  /// **'Bowling'**
-  String get event_type_bowling;
+  /// **'Go for coffee'**
+  String get event_type_social_coffee;
 
-  /// No description provided for @event_type_bowling_emoji.
+  /// No description provided for @event_type_social_coffee_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🎳🎯🍕'**
-  String get event_type_bowling_emoji;
+  /// **'☕️🗨️'**
+  String get event_type_social_coffee_emoji;
 
-  /// No description provided for @event_type_library.
+  /// No description provided for @event_type_social_newcomers.
   ///
   /// In en, this message translates to:
-  /// **'Library'**
-  String get event_type_library;
+  /// **'Newcomers in the city'**
+  String get event_type_social_newcomers;
 
-  /// No description provided for @event_type_library_emoji.
+  /// No description provided for @event_type_social_newcomers_emoji.
   ///
   /// In en, this message translates to:
-  /// **'📚🤓🕯️'**
-  String get event_type_library_emoji;
+  /// **'🆕🏙️'**
+  String get event_type_social_newcomers_emoji;
 
-  /// No description provided for @event_type_bike.
+  /// No description provided for @event_type_social_introverts.
   ///
   /// In en, this message translates to:
-  /// **'Bike ride'**
-  String get event_type_bike;
+  /// **'Introverts gathering'**
+  String get event_type_social_introverts;
 
-  /// No description provided for @event_type_bike_emoji.
+  /// No description provided for @event_type_social_introverts_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🚴‍♂️🌳🗺️'**
-  String get event_type_bike_emoji;
+  /// **'😶‍🌫️📚'**
+  String get event_type_social_introverts_emoji;
 
-  /// No description provided for @event_type_boardgames.
+  /// No description provided for @event_type_social_movie_pizza.
   ///
   /// In en, this message translates to:
-  /// **'Board games night'**
-  String get event_type_boardgames;
+  /// **'Movie & pizza night'**
+  String get event_type_social_movie_pizza;
 
-  /// No description provided for @event_type_boardgames_emoji.
+  /// No description provided for @event_type_social_movie_pizza_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🎲♟️🃏'**
-  String get event_type_boardgames_emoji;
+  /// **'🍕🎬'**
+  String get event_type_social_movie_pizza_emoji;
 
-  /// No description provided for @event_type_exhibition.
+  /// No description provided for @event_type_social_memes_tea.
   ///
   /// In en, this message translates to:
-  /// **'Exhibition'**
-  String get event_type_exhibition;
+  /// **'Memes & tea evening'**
+  String get event_type_social_memes_tea;
 
-  /// No description provided for @event_type_exhibition_emoji.
+  /// No description provided for @event_type_social_memes_tea_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🏛️📸🧐'**
-  String get event_type_exhibition_emoji;
+  /// **'😂🍵'**
+  String get event_type_social_memes_tea_emoji;
 
-  /// No description provided for @event_type_gastro.
+  /// No description provided for @event_type_social_talk.
   ///
   /// In en, this message translates to:
-  /// **'Gastro tour'**
-  String get event_type_gastro;
+  /// **'Just talk'**
+  String get event_type_social_talk;
 
-  /// No description provided for @event_type_gastro_emoji.
+  /// No description provided for @event_type_social_talk_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🍣🥘🍷'**
-  String get event_type_gastro_emoji;
+  /// **'🗣️💬'**
+  String get event_type_social_talk_emoji;
 
-  /// No description provided for @event_type_beach.
+  /// No description provided for @event_type_social_relax.
   ///
   /// In en, this message translates to:
-  /// **'Beach day'**
-  String get event_type_beach;
+  /// **'Afterwork relax'**
+  String get event_type_social_relax;
 
-  /// No description provided for @event_type_beach_emoji.
+  /// No description provided for @event_type_social_relax_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🏖️☀️🌊'**
-  String get event_type_beach_emoji;
+  /// **'🧘‍♂️🌙'**
+  String get event_type_social_relax_emoji;
 
-  /// No description provided for @event_type_yoga.
+  /// No description provided for @event_type_sport_company.
   ///
   /// In en, this message translates to:
-  /// **'Yoga class'**
-  String get event_type_yoga;
+  /// **'Company for sports'**
+  String get event_type_sport_company;
 
-  /// No description provided for @event_type_yoga_emoji.
+  /// No description provided for @event_type_sport_company_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🧘‍♀️🕉️🌿'**
-  String get event_type_yoga_emoji;
+  /// **'🏋️‍♀️🤸‍♂️'**
+  String get event_type_sport_company_emoji;
 
-  /// No description provided for @event_type_karaoke.
+  /// No description provided for @event_type_sport_play.
   ///
   /// In en, this message translates to:
-  /// **'Karaoke'**
-  String get event_type_karaoke;
+  /// **'Let\'s play something'**
+  String get event_type_sport_play;
 
-  /// No description provided for @event_type_karaoke_emoji.
+  /// No description provided for @event_type_sport_play_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🎤🎶😄'**
-  String get event_type_karaoke_emoji;
+  /// **'⚽🏐🏓'**
+  String get event_type_sport_play_emoji;
 
-  /// No description provided for @event_type_karting.
+  /// No description provided for @event_type_sport_gym.
   ///
   /// In en, this message translates to:
-  /// **'Karting'**
-  String get event_type_karting;
+  /// **'Going to the gym — join me?'**
+  String get event_type_sport_gym;
 
-  /// No description provided for @event_type_karting_emoji.
+  /// No description provided for @event_type_sport_gym_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🏎️💨🔥'**
-  String get event_type_karting_emoji;
+  /// **'🏋️‍♂️🤝'**
+  String get event_type_sport_gym_emoji;
 
-  /// No description provided for @event_type_quest.
+  /// No description provided for @event_type_sport_morning.
   ///
   /// In en, this message translates to:
-  /// **'Quest room'**
-  String get event_type_quest;
+  /// **'Morning workout'**
+  String get event_type_sport_morning;
 
-  /// No description provided for @event_type_quest_emoji.
+  /// No description provided for @event_type_sport_morning_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🕵️🔐🧩'**
-  String get event_type_quest_emoji;
+  /// **'🌅🤸‍♀️'**
+  String get event_type_sport_morning_emoji;
 
-  /// No description provided for @event_type_coworking.
+  /// No description provided for @event_type_sport_trip.
   ///
   /// In en, this message translates to:
-  /// **'Coworking meeting'**
-  String get event_type_coworking;
+  /// **'Mini day trip'**
+  String get event_type_sport_trip;
 
-  /// No description provided for @event_type_coworking_emoji.
+  /// No description provided for @event_type_sport_trip_emoji.
   ///
   /// In en, this message translates to:
-  /// **'💻☕📈'**
-  String get event_type_coworking_emoji;
+  /// **'🚌🏞️'**
+  String get event_type_sport_trip_emoji;
 
-  /// No description provided for @event_type_concert.
+  /// No description provided for @event_type_sport_beach.
   ///
   /// In en, this message translates to:
-  /// **'Concert'**
-  String get event_type_concert;
+  /// **'Beach / river day'**
+  String get event_type_sport_beach;
 
-  /// No description provided for @event_type_concert_emoji.
+  /// No description provided for @event_type_sport_beach_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🎸🎤🔊'**
-  String get event_type_concert_emoji;
+  /// **'🏖️🍉'**
+  String get event_type_sport_beach_emoji;
 
-  /// No description provided for @event_type_lasertag.
+  /// No description provided for @event_type_sport_dog.
   ///
   /// In en, this message translates to:
-  /// **'Lasertag / Paintball'**
-  String get event_type_lasertag;
+  /// **'Walk the dog'**
+  String get event_type_sport_dog;
 
-  /// No description provided for @event_type_lasertag_emoji.
+  /// No description provided for @event_type_sport_dog_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🔫🧢🕶️'**
-  String get event_type_lasertag_emoji;
+  /// **'🐕🚶‍♂️'**
+  String get event_type_sport_dog_emoji;
 
-  /// No description provided for @event_type_picnic.
+  /// No description provided for @event_type_sport_cafe.
   ///
   /// In en, this message translates to:
-  /// **'Summer picnic'**
-  String get event_type_picnic;
+  /// **'Trying a new cafe'**
+  String get event_type_sport_cafe;
 
-  /// No description provided for @event_type_picnic_emoji.
+  /// No description provided for @event_type_sport_cafe_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🧺🍓🌼'**
-  String get event_type_picnic_emoji;
+  /// **'☕️🆕'**
+  String get event_type_sport_cafe_emoji;
 
-  /// No description provided for @event_type_masterclass.
+  /// No description provided for @event_type_games_board.
   ///
   /// In en, this message translates to:
-  /// **'Master class (cooking, art)'**
-  String get event_type_masterclass;
+  /// **'Board games in park/cafe'**
+  String get event_type_games_board;
 
-  /// No description provided for @event_type_masterclass_emoji.
+  /// No description provided for @event_type_games_board_emoji.
   ///
   /// In en, this message translates to:
-  /// **'👩‍🍳🎨🫕'**
-  String get event_type_masterclass_emoji;
+  /// **'🎲🃏'**
+  String get event_type_games_board_emoji;
 
-  /// No description provided for @event_type_museum.
+  /// No description provided for @event_type_games_night.
   ///
   /// In en, this message translates to:
-  /// **'Museum'**
-  String get event_type_museum;
+  /// **'Game night / PlayStation'**
+  String get event_type_games_night;
 
-  /// No description provided for @event_type_museum_emoji.
+  /// No description provided for @event_type_games_night_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🏺🔎📜'**
-  String get event_type_museum_emoji;
+  /// **'🎮🕹️'**
+  String get event_type_games_night_emoji;
 
-  /// No description provided for @event_type_movie.
+  /// No description provided for @event_type_games_standup.
   ///
   /// In en, this message translates to:
-  /// **'Movie night'**
-  String get event_type_movie;
+  /// **'Comedy room / standup'**
+  String get event_type_games_standup;
 
-  /// No description provided for @event_type_movie_emoji.
+  /// No description provided for @event_type_games_standup_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🎬🍿🛋️'**
-  String get event_type_movie_emoji;
+  /// **'😂🎤'**
+  String get event_type_games_standup_emoji;
 
-  /// No description provided for @event_type_ferris.
+  /// No description provided for @event_type_games_karaoke.
   ///
   /// In en, this message translates to:
-  /// **'Ferris wheel / amusement park'**
-  String get event_type_ferris;
+  /// **'Karaoke night'**
+  String get event_type_games_karaoke;
 
-  /// No description provided for @event_type_ferris_emoji.
+  /// No description provided for @event_type_games_karaoke_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🎡🎠🍭'**
-  String get event_type_ferris_emoji;
+  /// **'🎤🎶'**
+  String get event_type_games_karaoke_emoji;
 
-  /// No description provided for @event_type_pub.
+  /// No description provided for @event_type_games_cook.
   ///
   /// In en, this message translates to:
-  /// **'Pub'**
-  String get event_type_pub;
+  /// **'Cooking together'**
+  String get event_type_games_cook;
 
-  /// No description provided for @event_type_pub_emoji.
+  /// No description provided for @event_type_games_cook_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🍺🎯🍟'**
-  String get event_type_pub_emoji;
+  /// **'🍳👩‍🍳'**
+  String get event_type_games_cook_emoji;
 
-  /// No description provided for @event_type_park.
+  /// No description provided for @event_type_games_creative.
   ///
   /// In en, this message translates to:
-  /// **'Park'**
-  String get event_type_park;
+  /// **'Creative meetup'**
+  String get event_type_games_creative;
 
-  /// No description provided for @event_type_park_emoji.
+  /// No description provided for @event_type_games_creative_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🌳🛴🍃'**
-  String get event_type_park_emoji;
+  /// **'🎨✍️'**
+  String get event_type_games_creative_emoji;
 
-  /// No description provided for @event_type_hiking.
+  /// No description provided for @event_type_games_language.
   ///
   /// In en, this message translates to:
-  /// **'Hiking'**
-  String get event_type_hiking;
+  /// **'Language tandem'**
+  String get event_type_games_language;
 
-  /// No description provided for @event_type_hiking_emoji.
+  /// No description provided for @event_type_games_language_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🥾🏞️🔥'**
-  String get event_type_hiking_emoji;
+  /// **'🗣️🇬🇧🇩🇪🇺🇦'**
+  String get event_type_games_language_emoji;
 
-  /// No description provided for @event_type_restaurant.
+  /// No description provided for @event_type_games_quest.
   ///
   /// In en, this message translates to:
-  /// **'Restaurant'**
-  String get event_type_restaurant;
+  /// **'Quest / bowling / VR'**
+  String get event_type_games_quest;
 
-  /// No description provided for @event_type_restaurant_emoji.
+  /// No description provided for @event_type_games_quest_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🍽️🍷🕯️'**
-  String get event_type_restaurant_emoji;
+  /// **'🕵️🎳🕶️'**
+  String get event_type_games_quest_emoji;
 
-  /// No description provided for @event_type_skating.
+  /// No description provided for @event_type_chill_picnic.
   ///
   /// In en, this message translates to:
-  /// **'Rollerdrome / Ice rink'**
-  String get event_type_skating;
+  /// **'Picnic for no reason'**
+  String get event_type_chill_picnic;
 
-  /// No description provided for @event_type_skating_emoji.
+  /// No description provided for @event_type_chill_picnic_emoji.
   ///
   /// In en, this message translates to:
-  /// **'⛸️🎶🌀'**
-  String get event_type_skating_emoji;
+  /// **'🧺🎸'**
+  String get event_type_chill_picnic_emoji;
 
-  /// No description provided for @event_type_safari.
+  /// No description provided for @event_type_chill_yard.
   ///
   /// In en, this message translates to:
-  /// **'Safari / Zoo'**
-  String get event_type_safari;
+  /// **'Chill in the yard/roof'**
+  String get event_type_chill_yard;
 
-  /// No description provided for @event_type_safari_emoji.
+  /// No description provided for @event_type_chill_yard_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🦁🐘🦓'**
-  String get event_type_safari_emoji;
+  /// **'🏡🌇'**
+  String get event_type_chill_yard_emoji;
 
-  /// No description provided for @event_type_gym.
+  /// No description provided for @event_type_chill_morning_coffee.
   ///
   /// In en, this message translates to:
-  /// **'Gym / Group training'**
-  String get event_type_gym;
+  /// **'Morning coffee before work'**
+  String get event_type_chill_morning_coffee;
 
-  /// No description provided for @event_type_gym_emoji.
+  /// No description provided for @event_type_chill_morning_coffee_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🏋️‍♂️💪🎧'**
-  String get event_type_gym_emoji;
+  /// **'🌅☕️'**
+  String get event_type_chill_morning_coffee_emoji;
 
-  /// No description provided for @event_type_party.
+  /// No description provided for @event_type_chill_blanket.
   ///
   /// In en, this message translates to:
-  /// **'Theme party'**
-  String get event_type_party;
+  /// **'Blanket & thermos hangout'**
+  String get event_type_chill_blanket;
 
-  /// No description provided for @event_type_party_emoji.
+  /// No description provided for @event_type_chill_blanket_emoji.
   ///
   /// In en, this message translates to:
-  /// **'🎉🎭✨'**
-  String get event_type_party_emoji;
-
-  /// No description provided for @event_type_private.
-  ///
-  /// In en, this message translates to:
-  /// **'Private / Intimate meeting'**
-  String get event_type_private;
-
-  /// No description provided for @event_type_private_emoji.
-  ///
-  /// In en, this message translates to:
-  /// **'🕯️🍷🔞'**
-  String get event_type_private_emoji;
+  /// **'🧣🍂'**
+  String get event_type_chill_blanket_emoji;
 
   /// No description provided for @filters.
   ///
@@ -1264,6 +1252,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Here you can choose the friends you are currently hanging out with.'**
   String get with_friends;
+
+  /// No description provided for @event_group_social.
+  ///
+  /// In en, this message translates to:
+  /// **'🎉 Social / Hangout'**
+  String get event_group_social;
+
+  /// No description provided for @event_group_sport.
+  ///
+  /// In en, this message translates to:
+  /// **'🏃‍♀️ Activity / Sport'**
+  String get event_group_sport;
+
+  /// No description provided for @event_group_games.
+  ///
+  /// In en, this message translates to:
+  /// **'🎲 Board games / Fun'**
+  String get event_group_games;
+
+  /// No description provided for @event_group_chill.
+  ///
+  /// In en, this message translates to:
+  /// **'🌳 Chill'**
+  String get event_group_chill;
+
+  /// No description provided for @public_chat_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Open chat (anyone can join)'**
+  String get public_chat_title;
+
+  /// No description provided for @private_chat_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Private chat (only approved users can join)'**
+  String get private_chat_title;
+
+  /// No description provided for @public_chat_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat will be available to everyone.'**
+  String get public_chat_subtitle;
+
+  /// No description provided for @private_chat_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat will be available only after approval.'**
+  String get private_chat_subtitle;
+
+  /// No description provided for @public_chat_confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Open chat will be visible to everyone. Are you sure you want to make the chat public?'**
+  String get public_chat_confirm;
+
+  /// No description provided for @edit_profile_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile'**
+  String get edit_profile_title;
+
+  /// No description provided for @edit_profile_soon.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile coming soon!'**
+  String get edit_profile_soon;
+
+  /// No description provided for @edit_profile_ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get edit_profile_ok;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @preview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get preview;
+
+  /// No description provided for @media.
+  ///
+  /// In en, this message translates to:
+  /// **'Media'**
+  String get media;
+
+  /// No description provided for @about_me.
+  ///
+  /// In en, this message translates to:
+  /// **'About Me'**
+  String get about_me;
+
+  /// No description provided for @about_me_hint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell something about yourself...'**
+  String get about_me_hint;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

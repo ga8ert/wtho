@@ -43,6 +43,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           email: doc['email'] ?? '',
           photoUrl: doc.data()?['photoUrl'],
           nickname: doc['nickname'] ?? '',
+          about: doc.data() != null && doc.data()!.containsKey('about')
+              ? doc['about']
+              : '',
+          photoUrls: doc.data() != null && doc.data()!.containsKey('photoUrls')
+              ? List<String>.from(doc['photoUrls'])
+              : [],
         ),
       );
     } catch (e) {
@@ -135,6 +141,120 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       }
     } catch (e) {
       return null;
+    }
+  }
+}
+
+class EditProfileBloc extends Bloc<ProfileEvent, EditProfileState> {
+  EditProfileBloc() : super(EditProfileState()) {
+    on<EditProfileLoadRequested>(_onLoadRequested);
+    on<EditProfileFieldChanged>(_onFieldChanged);
+    on<EditProfilePhotoAdded>(_onPhotoAdded);
+    on<EditProfilePhotoRemoved>(_onPhotoRemoved);
+    on<EditProfileSubmitted>(_onSubmitted);
+  }
+
+  Future<void> _onLoadRequested(
+    EditProfileLoadRequested event,
+    Emitter<EditProfileState> emit,
+  ) async {
+    emit(state.copyWith(loading: true, error: null));
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) throw Exception('No user');
+      final doc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+      if (!doc.exists) throw Exception('Profile not found');
+      final data = doc.data()!;
+      emit(
+        state.copyWith(
+          name: data['name'] ?? '',
+          surname: data['surname'] ?? '',
+          email: data['email'] ?? '',
+          nickname: data['nickname'] ?? '',
+          age: data['age'] ?? 0,
+          about: data != null && data.containsKey('about') ? data['about'] : '',
+          photoUrls: data != null && data.containsKey('photoUrls')
+              ? List<String>.from(data['photoUrls'])
+              : [],
+          loading: false,
+          error: null,
+          success: false,
+        ),
+      );
+    } catch (e) {
+      emit(state.copyWith(loading: false, error: e.toString()));
+    }
+  }
+
+  void _onFieldChanged(
+    EditProfileFieldChanged event,
+    Emitter<EditProfileState> emit,
+  ) {
+    switch (event.field) {
+      case 'name':
+        emit(state.copyWith(name: event.value));
+        break;
+      case 'surname':
+        emit(state.copyWith(surname: event.value));
+        break;
+      case 'email':
+        emit(state.copyWith(email: event.value));
+        break;
+      case 'nickname':
+        emit(state.copyWith(nickname: event.value));
+        break;
+      case 'age':
+        emit(state.copyWith(age: event.value));
+        break;
+      case 'about':
+        emit(state.copyWith(about: event.value));
+        break;
+    }
+  }
+
+  void _onPhotoAdded(
+    EditProfilePhotoAdded event,
+    Emitter<EditProfileState> emit,
+  ) {
+    if (state.photoUrls.length >= 3) return;
+    final updated = List<String>.from(state.photoUrls)..add(event.photoPath);
+    emit(state.copyWith(photoUrls: updated));
+  }
+
+  void _onPhotoRemoved(
+    EditProfilePhotoRemoved event,
+    Emitter<EditProfileState> emit,
+  ) {
+    final updated = List<String>.from(state.photoUrls)..removeAt(event.index);
+    emit(state.copyWith(photoUrls: updated));
+  }
+
+  Future<void> _onSubmitted(
+    EditProfileSubmitted event,
+    Emitter<EditProfileState> emit,
+  ) async {
+    emit(state.copyWith(loading: true, error: null, success: false));
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user == null) throw Exception('No user');
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .update({
+            'name': state.name,
+            'surname': state.surname,
+            'email': state.email,
+            'nickname': state.nickname,
+            'age': state.age,
+            'about': state.about,
+            'photoUrls': state.photoUrls,
+          });
+      emit(state.copyWith(loading: false, success: true));
+    } catch (e) {
+      emit(state.copyWith(loading: false, error: e.toString()));
     }
   }
 }

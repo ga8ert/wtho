@@ -326,190 +326,184 @@ class AppLocalizationsUk extends AppLocalizations {
   String get friend_request_sent => 'Запит надіслано';
 
   @override
-  String get event_type_aquapark => 'Аквапарк';
+  String get event_type_social_bar => 'Тусимо в барі';
 
   @override
-  String get event_type_aquapark_emoji => '💦🛟👙';
+  String get event_type_social_bar_emoji => '🎉🍻';
 
   @override
-  String get event_type_art_gallery => 'Арт-галерея';
+  String get event_type_social_hangout => 'Просто потусити';
 
   @override
-  String get event_type_art_gallery_emoji => '🖼️🎨🧑‍🎨';
+  String get event_type_social_hangout_emoji => '🕺💃';
 
   @override
-  String get event_type_bbq => 'Барбекю';
+  String get event_type_social_neighbors => 'Сусіди ЖК';
 
   @override
-  String get event_type_bbq_emoji => '🍖🔥🪵';
+  String get event_type_social_neighbors_emoji => '🏢🤝';
 
   @override
-  String get event_type_bowling => 'Боулінг';
+  String get event_type_social_coffee => 'Вийти на каву';
 
   @override
-  String get event_type_bowling_emoji => '🎳🎯🍕';
+  String get event_type_social_coffee_emoji => '☕️🗨️';
 
   @override
-  String get event_type_library => 'Бібліотека';
+  String get event_type_social_newcomers => 'Зустріч новачків у місті';
 
   @override
-  String get event_type_library_emoji => '📚🤓🕯️';
+  String get event_type_social_newcomers_emoji => '🆕🏙️';
 
   @override
-  String get event_type_bike => 'Велопрогулянка';
+  String get event_type_social_introverts => 'Сходка інтровертів';
 
   @override
-  String get event_type_bike_emoji => '🚴‍♂️🌳🗺️';
+  String get event_type_social_introverts_emoji => '😶‍🌫️📚';
 
   @override
-  String get event_type_boardgames => 'Вечір настолок';
+  String get event_type_social_movie_pizza => 'Ніч кіно і піци';
 
   @override
-  String get event_type_boardgames_emoji => '🎲♟️🃏';
+  String get event_type_social_movie_pizza_emoji => '🍕🎬';
 
   @override
-  String get event_type_exhibition => 'Виставка';
+  String get event_type_social_memes_tea => 'Вечір мемів і чаю';
 
   @override
-  String get event_type_exhibition_emoji => '🏛️📸🧐';
+  String get event_type_social_memes_tea_emoji => '😂🍵';
 
   @override
-  String get event_type_gastro => 'Гастро-тур';
+  String get event_type_social_talk => 'Просто поговорити';
 
   @override
-  String get event_type_gastro_emoji => '🍣🥘🍷';
+  String get event_type_social_talk_emoji => '🗣️💬';
 
   @override
-  String get event_type_beach => 'День на пляжі';
+  String get event_type_social_relax => 'Релакс після роботи';
 
   @override
-  String get event_type_beach_emoji => '🏖️☀️🌊';
+  String get event_type_social_relax_emoji => '🧘‍♂️🌙';
 
   @override
-  String get event_type_yoga => 'Заняття йогою';
+  String get event_type_sport_company => 'Компанія для спорту';
 
   @override
-  String get event_type_yoga_emoji => '🧘‍♀️🕉️🌿';
+  String get event_type_sport_company_emoji => '🏋️‍♀️🤸‍♂️';
 
   @override
-  String get event_type_karaoke => 'Караоке';
+  String get event_type_sport_play => 'Зіграємо щось';
 
   @override
-  String get event_type_karaoke_emoji => '🎤🎶😄';
+  String get event_type_sport_play_emoji => '⚽🏐🏓';
 
   @override
-  String get event_type_karting => 'Картинг';
+  String get event_type_sport_gym => 'Іду в спортзал — хто зі мною?';
 
   @override
-  String get event_type_karting_emoji => '🏎️💨🔥';
+  String get event_type_sport_gym_emoji => '🏋️‍♂️🤝';
 
   @override
-  String get event_type_quest => 'Квест-кімната';
+  String get event_type_sport_morning => 'Зарядка на світанку';
 
   @override
-  String get event_type_quest_emoji => '🕵️🔐🧩';
+  String get event_type_sport_morning_emoji => '🌅🤸‍♀️';
 
   @override
-  String get event_type_coworking => 'Коворкінг-зустріч';
+  String get event_type_sport_trip => 'Міні-подорож на день';
 
   @override
-  String get event_type_coworking_emoji => '💻☕📈';
+  String get event_type_sport_trip_emoji => '🚌🏞️';
 
   @override
-  String get event_type_concert => 'Концерт';
+  String get event_type_sport_beach => 'На пляж / до річки';
 
   @override
-  String get event_type_concert_emoji => '🎸🎤🔊';
+  String get event_type_sport_beach_emoji => '🏖️🍉';
 
   @override
-  String get event_type_lasertag => 'Лазертаг / Пейнтбол';
+  String get event_type_sport_dog => 'Погуляти з собакою';
 
   @override
-  String get event_type_lasertag_emoji => '🔫🧢🕶️';
+  String get event_type_sport_dog_emoji => '🐕🚶‍♂️';
 
   @override
-  String get event_type_picnic => 'Літній пікнік';
+  String get event_type_sport_cafe => 'Тестимо нове кафе';
 
   @override
-  String get event_type_picnic_emoji => '🧺🍓🌼';
+  String get event_type_sport_cafe_emoji => '☕️🆕';
 
   @override
-  String get event_type_masterclass => 'Майстер-клас (кулінарія, арт)';
+  String get event_type_games_board => 'Настолки в парку / кафе';
 
   @override
-  String get event_type_masterclass_emoji => '👩‍🍳🎨🫕';
+  String get event_type_games_board_emoji => '🎲🃏';
 
   @override
-  String get event_type_museum => 'Музей';
+  String get event_type_games_night => 'Ігрова ніч / PlayStation';
 
   @override
-  String get event_type_museum_emoji => '🏺🔎📜';
+  String get event_type_games_night_emoji => '🎮🕹️';
 
   @override
-  String get event_type_movie => 'Ніч кіно';
+  String get event_type_games_standup => 'Кімната сміху / стендап';
 
   @override
-  String get event_type_movie_emoji => '🎬🍿🛋️';
+  String get event_type_games_standup_emoji => '😂🎤';
 
   @override
-  String get event_type_ferris => 'Оглядове колесо / парк атракціонів';
+  String get event_type_games_karaoke => 'Караоке-вечір';
 
   @override
-  String get event_type_ferris_emoji => '🎡🎠🍭';
+  String get event_type_games_karaoke_emoji => '🎤🎶';
 
   @override
-  String get event_type_pub => 'Паб';
+  String get event_type_games_cook => 'Готуємо щось разом';
 
   @override
-  String get event_type_pub_emoji => '🍺🎯🍟';
+  String get event_type_games_cook_emoji => '🍳👩‍🍳';
 
   @override
-  String get event_type_park => 'Парк';
+  String get event_type_games_creative => 'Творча сходка';
 
   @override
-  String get event_type_park_emoji => '🌳🛴🍃';
+  String get event_type_games_creative_emoji => '🎨✍️';
 
   @override
-  String get event_type_hiking => 'Похід у гори';
+  String get event_type_games_language => 'Мовний тандем';
 
   @override
-  String get event_type_hiking_emoji => '🥾🏞️🔥';
+  String get event_type_games_language_emoji => '🗣️🇬🇧🇩🇪🇺🇦';
 
   @override
-  String get event_type_restaurant => 'Ресторан';
+  String get event_type_games_quest => 'Квест / боулінг / VR';
 
   @override
-  String get event_type_restaurant_emoji => '🍽️🍷🕯️';
+  String get event_type_games_quest_emoji => '🕵️🎳🕶️';
 
   @override
-  String get event_type_skating => 'Роллердром / каток';
+  String get event_type_chill_picnic => 'Пікнік без приводу';
 
   @override
-  String get event_type_skating_emoji => '⛸️🎶🌀';
+  String get event_type_chill_picnic_emoji => '🧺🎸';
 
   @override
-  String get event_type_safari => 'Сафарі / зоопарк';
+  String get event_type_chill_yard => 'Чіл у дворі / на даху';
 
   @override
-  String get event_type_safari_emoji => '🦁🐘🦓';
+  String get event_type_chill_yard_emoji => '🏡🌇';
 
   @override
-  String get event_type_gym => 'Спортзал / групове тренування';
+  String get event_type_chill_morning_coffee => 'Ранкова кава перед роботою';
 
   @override
-  String get event_type_gym_emoji => '🏋️‍♂️💪🎧';
+  String get event_type_chill_morning_coffee_emoji => '🌅☕️';
 
   @override
-  String get event_type_party => 'Тематична вечірка';
+  String get event_type_chill_blanket => 'Тусовка з пледами і термосами';
 
   @override
-  String get event_type_party_emoji => '🎉🎭✨';
-
-  @override
-  String get event_type_private => 'Приватна / Інтимна зустріч';
-
-  @override
-  String get event_type_private_emoji => '🕯️🍷🔞';
+  String get event_type_chill_blanket_emoji => '🧣🍂';
 
   @override
   String get filters => 'Фільтри';
@@ -610,4 +604,55 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get with_friends => 'Тут ти можеш обрати друзів з якими ви зараз тусите';
+
+  @override
+  String get event_group_social => '🎉 Соціальні / туса';
+
+  @override
+  String get event_group_sport => '🏃‍♀️ Активність / спорт';
+
+  @override
+  String get event_group_games => '🎲 Настолки / розваги';
+
+  @override
+  String get event_group_chill => '🌳 Спокійні';
+
+  @override
+  String get public_chat_title => 'Відкритий чат (може приєднатись будь-хто)';
+
+  @override
+  String get private_chat_title => 'Приватний чат (тільки після підтвердження)';
+
+  @override
+  String get public_chat_subtitle => 'Чат буде доступний для всіх.';
+
+  @override
+  String get private_chat_subtitle => 'Чат буде доступний лише після підтвердження.';
+
+  @override
+  String get public_chat_confirm => 'Відкритий чат буде видимий для всіх. Ви впевнені, що хочете зробити чат публічним?';
+
+  @override
+  String get edit_profile_title => 'Редагувати профіль';
+
+  @override
+  String get edit_profile_soon => 'Редагування профілю скоро буде доступне!';
+
+  @override
+  String get edit_profile_ok => 'Гаразд';
+
+  @override
+  String get edit => 'Редагувати';
+
+  @override
+  String get preview => 'Перегляд';
+
+  @override
+  String get media => 'Медіа';
+
+  @override
+  String get about_me => 'Про себе';
+
+  @override
+  String get about_me_hint => 'Розкажіть щось про себе...';
 }

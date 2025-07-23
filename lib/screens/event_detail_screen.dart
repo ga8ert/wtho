@@ -84,6 +84,12 @@ class _EventDetailBody extends StatelessWidget {
         final hasSentRequest = state.joinRequests.any(
           (req) => (req['uids'] as List?)?.contains(currentUid) ?? false,
         );
+        final isChatPublic =
+            (context
+                    .findAncestorWidgetOfExactType<EventDetailScreen>()
+                    ?.event['isChatPublic'] ??
+                false) ==
+            true;
         return Scaffold(
           appBar: AppBar(title: Text(state.authorProfile?.nickname ?? '')),
           body: state.loading
@@ -520,7 +526,7 @@ class _EventDetailBody extends StatelessWidget {
                           ),
                         ),
                       const SizedBox(height: 24),
-                      if (isFriend || isAuthor)
+                      if (isFriend || isAuthor || state.isChatPublic)
                         Center(
                           child: ElevatedButton.icon(
                             icon: const Icon(Icons.chat),

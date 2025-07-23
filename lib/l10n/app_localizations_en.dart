@@ -326,190 +326,184 @@ class AppLocalizationsEn extends AppLocalizations {
   String get friend_request_sent => 'Friend request sent';
 
   @override
-  String get event_type_aquapark => 'Aquapark';
+  String get event_type_social_bar => 'Bar hangout';
 
   @override
-  String get event_type_aquapark_emoji => '💦🛟👙';
+  String get event_type_social_bar_emoji => '🎉🍻';
 
   @override
-  String get event_type_art_gallery => 'Art gallery';
+  String get event_type_social_hangout => 'Just hang out';
 
   @override
-  String get event_type_art_gallery_emoji => '🖼️🎨🧑‍🎨';
+  String get event_type_social_hangout_emoji => '🕺💃';
 
   @override
-  String get event_type_bbq => 'Barbecue';
+  String get event_type_social_neighbors => 'Neighbors meetup';
 
   @override
-  String get event_type_bbq_emoji => '🍖🔥🪵';
+  String get event_type_social_neighbors_emoji => '🏢🤝';
 
   @override
-  String get event_type_bowling => 'Bowling';
+  String get event_type_social_coffee => 'Go for coffee';
 
   @override
-  String get event_type_bowling_emoji => '🎳🎯🍕';
+  String get event_type_social_coffee_emoji => '☕️🗨️';
 
   @override
-  String get event_type_library => 'Library';
+  String get event_type_social_newcomers => 'Newcomers in the city';
 
   @override
-  String get event_type_library_emoji => '📚🤓🕯️';
+  String get event_type_social_newcomers_emoji => '🆕🏙️';
 
   @override
-  String get event_type_bike => 'Bike ride';
+  String get event_type_social_introverts => 'Introverts gathering';
 
   @override
-  String get event_type_bike_emoji => '🚴‍♂️🌳🗺️';
+  String get event_type_social_introverts_emoji => '😶‍🌫️📚';
 
   @override
-  String get event_type_boardgames => 'Board games night';
+  String get event_type_social_movie_pizza => 'Movie & pizza night';
 
   @override
-  String get event_type_boardgames_emoji => '🎲♟️🃏';
+  String get event_type_social_movie_pizza_emoji => '🍕🎬';
 
   @override
-  String get event_type_exhibition => 'Exhibition';
+  String get event_type_social_memes_tea => 'Memes & tea evening';
 
   @override
-  String get event_type_exhibition_emoji => '🏛️📸🧐';
+  String get event_type_social_memes_tea_emoji => '😂🍵';
 
   @override
-  String get event_type_gastro => 'Gastro tour';
+  String get event_type_social_talk => 'Just talk';
 
   @override
-  String get event_type_gastro_emoji => '🍣🥘🍷';
+  String get event_type_social_talk_emoji => '🗣️💬';
 
   @override
-  String get event_type_beach => 'Beach day';
+  String get event_type_social_relax => 'Afterwork relax';
 
   @override
-  String get event_type_beach_emoji => '🏖️☀️🌊';
+  String get event_type_social_relax_emoji => '🧘‍♂️🌙';
 
   @override
-  String get event_type_yoga => 'Yoga class';
+  String get event_type_sport_company => 'Company for sports';
 
   @override
-  String get event_type_yoga_emoji => '🧘‍♀️🕉️🌿';
+  String get event_type_sport_company_emoji => '🏋️‍♀️🤸‍♂️';
 
   @override
-  String get event_type_karaoke => 'Karaoke';
+  String get event_type_sport_play => 'Let\'s play something';
 
   @override
-  String get event_type_karaoke_emoji => '🎤🎶😄';
+  String get event_type_sport_play_emoji => '⚽🏐🏓';
 
   @override
-  String get event_type_karting => 'Karting';
+  String get event_type_sport_gym => 'Going to the gym — join me?';
 
   @override
-  String get event_type_karting_emoji => '🏎️💨🔥';
+  String get event_type_sport_gym_emoji => '🏋️‍♂️🤝';
 
   @override
-  String get event_type_quest => 'Quest room';
+  String get event_type_sport_morning => 'Morning workout';
 
   @override
-  String get event_type_quest_emoji => '🕵️🔐🧩';
+  String get event_type_sport_morning_emoji => '🌅🤸‍♀️';
 
   @override
-  String get event_type_coworking => 'Coworking meeting';
+  String get event_type_sport_trip => 'Mini day trip';
 
   @override
-  String get event_type_coworking_emoji => '💻☕📈';
+  String get event_type_sport_trip_emoji => '🚌🏞️';
 
   @override
-  String get event_type_concert => 'Concert';
+  String get event_type_sport_beach => 'Beach / river day';
 
   @override
-  String get event_type_concert_emoji => '🎸🎤🔊';
+  String get event_type_sport_beach_emoji => '🏖️🍉';
 
   @override
-  String get event_type_lasertag => 'Lasertag / Paintball';
+  String get event_type_sport_dog => 'Walk the dog';
 
   @override
-  String get event_type_lasertag_emoji => '🔫🧢🕶️';
+  String get event_type_sport_dog_emoji => '🐕🚶‍♂️';
 
   @override
-  String get event_type_picnic => 'Summer picnic';
+  String get event_type_sport_cafe => 'Trying a new cafe';
 
   @override
-  String get event_type_picnic_emoji => '🧺🍓🌼';
+  String get event_type_sport_cafe_emoji => '☕️🆕';
 
   @override
-  String get event_type_masterclass => 'Master class (cooking, art)';
+  String get event_type_games_board => 'Board games in park/cafe';
 
   @override
-  String get event_type_masterclass_emoji => '👩‍🍳🎨🫕';
+  String get event_type_games_board_emoji => '🎲🃏';
 
   @override
-  String get event_type_museum => 'Museum';
+  String get event_type_games_night => 'Game night / PlayStation';
 
   @override
-  String get event_type_museum_emoji => '🏺🔎📜';
+  String get event_type_games_night_emoji => '🎮🕹️';
 
   @override
-  String get event_type_movie => 'Movie night';
+  String get event_type_games_standup => 'Comedy room / standup';
 
   @override
-  String get event_type_movie_emoji => '🎬🍿🛋️';
+  String get event_type_games_standup_emoji => '😂🎤';
 
   @override
-  String get event_type_ferris => 'Ferris wheel / amusement park';
+  String get event_type_games_karaoke => 'Karaoke night';
 
   @override
-  String get event_type_ferris_emoji => '🎡🎠🍭';
+  String get event_type_games_karaoke_emoji => '🎤🎶';
 
   @override
-  String get event_type_pub => 'Pub';
+  String get event_type_games_cook => 'Cooking together';
 
   @override
-  String get event_type_pub_emoji => '🍺🎯🍟';
+  String get event_type_games_cook_emoji => '🍳👩‍🍳';
 
   @override
-  String get event_type_park => 'Park';
+  String get event_type_games_creative => 'Creative meetup';
 
   @override
-  String get event_type_park_emoji => '🌳🛴🍃';
+  String get event_type_games_creative_emoji => '🎨✍️';
 
   @override
-  String get event_type_hiking => 'Hiking';
+  String get event_type_games_language => 'Language tandem';
 
   @override
-  String get event_type_hiking_emoji => '🥾🏞️🔥';
+  String get event_type_games_language_emoji => '🗣️🇬🇧🇩🇪🇺🇦';
 
   @override
-  String get event_type_restaurant => 'Restaurant';
+  String get event_type_games_quest => 'Quest / bowling / VR';
 
   @override
-  String get event_type_restaurant_emoji => '🍽️🍷🕯️';
+  String get event_type_games_quest_emoji => '🕵️🎳🕶️';
 
   @override
-  String get event_type_skating => 'Rollerdrome / Ice rink';
+  String get event_type_chill_picnic => 'Picnic for no reason';
 
   @override
-  String get event_type_skating_emoji => '⛸️🎶🌀';
+  String get event_type_chill_picnic_emoji => '🧺🎸';
 
   @override
-  String get event_type_safari => 'Safari / Zoo';
+  String get event_type_chill_yard => 'Chill in the yard/roof';
 
   @override
-  String get event_type_safari_emoji => '🦁🐘🦓';
+  String get event_type_chill_yard_emoji => '🏡🌇';
 
   @override
-  String get event_type_gym => 'Gym / Group training';
+  String get event_type_chill_morning_coffee => 'Morning coffee before work';
 
   @override
-  String get event_type_gym_emoji => '🏋️‍♂️💪🎧';
+  String get event_type_chill_morning_coffee_emoji => '🌅☕️';
 
   @override
-  String get event_type_party => 'Theme party';
+  String get event_type_chill_blanket => 'Blanket & thermos hangout';
 
   @override
-  String get event_type_party_emoji => '🎉🎭✨';
-
-  @override
-  String get event_type_private => 'Private / Intimate meeting';
-
-  @override
-  String get event_type_private_emoji => '🕯️🍷🔞';
+  String get event_type_chill_blanket_emoji => '🧣🍂';
 
   @override
   String get filters => 'Filters';
@@ -610,4 +604,55 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get with_friends => 'Here you can choose the friends you are currently hanging out with.';
+
+  @override
+  String get event_group_social => '🎉 Social / Hangout';
+
+  @override
+  String get event_group_sport => '🏃‍♀️ Activity / Sport';
+
+  @override
+  String get event_group_games => '🎲 Board games / Fun';
+
+  @override
+  String get event_group_chill => '🌳 Chill';
+
+  @override
+  String get public_chat_title => 'Open chat (anyone can join)';
+
+  @override
+  String get private_chat_title => 'Private chat (only approved users can join)';
+
+  @override
+  String get public_chat_subtitle => 'Chat will be available to everyone.';
+
+  @override
+  String get private_chat_subtitle => 'Chat will be available only after approval.';
+
+  @override
+  String get public_chat_confirm => 'Open chat will be visible to everyone. Are you sure you want to make the chat public?';
+
+  @override
+  String get edit_profile_title => 'Edit profile';
+
+  @override
+  String get edit_profile_soon => 'Edit profile coming soon!';
+
+  @override
+  String get edit_profile_ok => 'OK';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get preview => 'Preview';
+
+  @override
+  String get media => 'Media';
+
+  @override
+  String get about_me => 'About Me';
+
+  @override
+  String get about_me_hint => 'Tell something about yourself...';
 }

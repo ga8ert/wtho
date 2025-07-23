@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../bloc/auth/auth_bloc.dart';
 import '../bloc/auth/auth_event.dart';
 import '../bloc/auth/auth_state.dart';
+import '../screens/support_us_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -75,6 +76,26 @@ class SettingsScreen extends StatelessWidget {
                   },
                 ),
                 Divider(color: Colors.grey[300], height: 0.5),
+                ListTile(
+                  leading: const Icon(Icons.favorite, color: Colors.purple),
+                  title: Text(AppLocalizations.of(context)!.support_us),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const SupportUsScreen(),
+                      ),
+                    );
+                  },
+                ),
+                Divider(color: Colors.grey[300], height: 0.5),
+                ListTile(
+                  leading: const Icon(Icons.logout, color: Colors.grey),
+                  title: Text(AppLocalizations.of(context)!.logout),
+                  onTap: () {
+                    context.read<AuthBloc>().add(AuthLogoutRequested());
+                  },
+                ),
+
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(

@@ -22,6 +22,10 @@ class UserProfileBloc extends Bloc<UserProfileEvent, UserProfileState> {
       final user = userDoc.data();
       if (user == null) throw Exception('User not found');
       user['uid'] = event.userId;
+      user['about'] = user.containsKey('about') ? user['about'] : '';
+      user['photoUrls'] = user.containsKey('photoUrls')
+          ? user['photoUrls']
+          : [];
       final currentUid = event.currentUserId;
       bool isFriend = false;
       if (currentUid != null) {

@@ -34,7 +34,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   final List<MeetingCardData> cards = [];
   bool _emailDialogShown = false;
   int _selectedTab = 0; // Always start with events
@@ -42,47 +42,62 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // --- Meeting types ---
   static const Map<String, String> _typeNameKeys = {
-    'event_type_aquapark': 'event_type_aquapark',
-    'event_type_art_gallery': 'event_type_art_gallery',
-    'event_type_bbq': 'event_type_bbq',
-    'event_type_bowling': 'event_type_bowling',
-    'event_type_library': 'event_type_library',
-    'event_type_bike': 'event_type_bike',
-    'event_type_boardgames': 'event_type_boardgames',
-    'event_type_exhibition': 'event_type_exhibition',
-    'event_type_gastro': 'event_type_gastro',
-    'event_type_beach': 'event_type_beach',
-    'event_type_yoga': 'event_type_yoga',
-    'event_type_karaoke': 'event_type_karaoke',
-    'event_type_karting': 'event_type_karting',
-    'event_type_quest': 'event_type_quest',
-    'event_type_coworking': 'event_type_coworking',
-    'event_type_concert': 'event_type_concert',
-    'event_type_lasertag': 'event_type_lasertag',
-    'event_type_picnic': 'event_type_picnic',
-    'event_type_masterclass': 'event_type_masterclass',
-    'event_type_museum': 'event_type_museum',
-    'event_type_movie': 'event_type_movie',
-    'event_type_ferris': 'event_type_ferris',
-    'event_type_pub': 'event_type_pub',
-    'event_type_park': 'event_type_park',
-    'event_type_hiking': 'event_type_hiking',
-    'event_type_restaurant': 'event_type_restaurant',
-    'event_type_skating': 'event_type_skating',
-    'event_type_safari': 'event_type_safari',
-    'event_type_gym': 'event_type_gym',
-    'event_type_party': 'event_type_party',
-    'event_type_private': 'event_type_private',
-    'event_type_other': 'event_type_other',
+    'event_type_social_bar': 'event_type_social_bar',
+    'event_type_social_hangout': 'event_type_social_hangout',
+    'event_type_social_neighbors': 'event_type_social_neighbors',
+    'event_type_social_coffee': 'event_type_social_coffee',
+    'event_type_social_newcomers': 'event_type_social_newcomers',
+    'event_type_social_introverts': 'event_type_social_introverts',
+    'event_type_social_movie_pizza': 'event_type_social_movie_pizza',
+    'event_type_social_memes_tea': 'event_type_social_memes_tea',
+    'event_type_social_talk': 'event_type_social_talk',
+    'event_type_social_relax': 'event_type_social_relax',
+    'event_type_sport_company': 'event_type_sport_company',
+    'event_type_sport_play': 'event_type_sport_play',
+    'event_type_sport_gym': 'event_type_sport_gym',
+    'event_type_sport_morning': 'event_type_sport_morning',
+    'event_type_sport_trip': 'event_type_sport_trip',
+    'event_type_sport_beach': 'event_type_sport_beach',
+    'event_type_sport_dog': 'event_type_sport_dog',
+    'event_type_sport_cafe': 'event_type_sport_cafe',
+    'event_type_games_board': 'event_type_games_board',
+    'event_type_games_night': 'event_type_games_night',
+    'event_type_games_standup': 'event_type_games_standup',
+    'event_type_games_karaoke': 'event_type_games_karaoke',
+    'event_type_games_cook': 'event_type_games_cook',
+    'event_type_games_creative': 'event_type_games_creative',
+    'event_type_games_language': 'event_type_games_language',
+    'event_type_games_quest': 'event_type_games_quest',
+    'event_type_chill_picnic': 'event_type_chill_picnic',
+    'event_type_chill_yard': 'event_type_chill_yard',
+    'event_type_chill_morning_coffee': 'event_type_chill_morning_coffee',
+    'event_type_chill_blanket': 'event_type_chill_blanket',
   };
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _selectedTab = 0; // Always start with events
     _checkLocationPermission();
     context.read<HomeBloc>().add(LoadEventsWithLocation());
-    context.read<AuthBloc>().add(EmailVerificationCheckRequested());
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null && user.emailVerified == false) {
+      context.read<AuthBloc>().add(EmailVerificationCheckRequested());
+    }
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _checkLocationPermission();
+    }
   }
 
   Future<void> _checkLocationPermission() async {
@@ -107,7 +122,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.of(context).pop();
                   _locationDialogShown = false;
                   await Future.delayed(const Duration(milliseconds: 100));
-                  setState(() {});
+                  if (!mounted) return;
+                  if (mounted) setState(() {});
                   context.read<HomeBloc>().add(LoadEventsWithLocation());
                   _checkLocationPermission();
                 },
@@ -116,10 +132,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         );
+        if (!mounted) return;
       }
     } else {
       // Якщо дозвіл вже надано, оновити екран і події
-      setState(() {});
+      if (mounted) setState(() {});
       context.read<HomeBloc>().add(LoadEventsWithLocation());
     }
   }
@@ -128,11 +145,10 @@ class _HomeScreenState extends State<HomeScreen> {
     await Navigator.of(
       context,
     ).push(MaterialPageRoute(builder: (context) => const ProfileScreen()));
-    if (mounted) {
-      setState(() {
-        _selectedTab = 0;
-      });
-    }
+    if (!mounted) return;
+    setState(() {
+      _selectedTab = 0;
+    });
   }
 
   Future<void> _addCard() async {
@@ -142,11 +158,13 @@ class _HomeScreenState extends State<HomeScreen> {
           .collection('users')
           .doc(user.uid)
           .get();
+      if (!mounted) return;
       final withNow = (doc.data()?['withNow'] as List?)?.cast<String>() ?? [];
     }
     final result = await Navigator.of(
       context,
     ).push(MaterialPageRoute(builder: (context) => const EventFormScreen()));
+    if (!mounted) return;
     if (result == true && mounted) {
       context.read<HomeBloc>().add(LoadEventsWithLocation());
     }
@@ -203,7 +221,6 @@ class _HomeScreenState extends State<HomeScreen> {
             }
             _emailDialogShown = false;
           }
-        } else if (state is EmailVerificationSent) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(AppLocalizations.of(context)!.letter_has_been_sent),
@@ -211,6 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           );
         } else if (state is AuthInitial || state is AuthLoggedOut) {
+          // Не запускати перевірку email при виході
           Navigator.of(context).pushReplacementNamed('/login');
         }
       },
@@ -442,9 +460,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: EdgeInsets.zero,
                           constraints: const BoxConstraints(),
                           onPressed: () {
-                            setState(() {
-                              _selectedTab = 0;
-                            });
+                            if (mounted)
+                              setState(() {
+                                _selectedTab = 0;
+                              });
                           },
                         ),
                         IconButton(
@@ -468,9 +487,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: EdgeInsets.zero,
                           constraints: const BoxConstraints(),
                           onPressed: () {
-                            setState(() {
-                              _selectedTab = 1;
-                            });
+                            if (mounted)
+                              setState(() {
+                                _selectedTab = 1;
+                              });
                           },
                         ),
                         IconButton(
@@ -482,9 +502,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: EdgeInsets.zero,
                           constraints: const BoxConstraints(),
                           onPressed: () {
-                            setState(() {
-                              _selectedTab = 2;
-                            });
+                            if (mounted)
+                              setState(() {
+                                _selectedTab = 2;
+                              });
                           },
                         ),
                       ],

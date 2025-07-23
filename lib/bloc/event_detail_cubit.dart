@@ -37,6 +37,7 @@ class EventDetailState extends Equatable {
   final String? eventEndTime;
   final List<String> photoUrls;
   final String? description;
+  final bool isChatPublic;
 
   const EventDetailState({
     this.loading = false,
@@ -57,6 +58,7 @@ class EventDetailState extends Equatable {
     this.eventEndTime,
     this.photoUrls = const [],
     this.description,
+    this.isChatPublic = false,
   });
 
   EventDetailState copyWith({
@@ -78,6 +80,7 @@ class EventDetailState extends Equatable {
     String? eventEndTime,
     List<String>? photoUrls,
     String? description,
+    bool? isChatPublic,
   }) {
     return EventDetailState(
       loading: loading ?? this.loading,
@@ -98,6 +101,7 @@ class EventDetailState extends Equatable {
       eventEndTime: eventEndTime ?? this.eventEndTime,
       photoUrls: photoUrls ?? this.photoUrls,
       description: description ?? this.description,
+      isChatPublic: isChatPublic ?? this.isChatPublic,
     );
   }
 
@@ -121,6 +125,7 @@ class EventDetailState extends Equatable {
     eventEndTime,
     photoUrls,
     description,
+    isChatPublic,
   ];
 }
 
@@ -204,6 +209,7 @@ class EventDetailCubit extends Cubit<EventDetailState> {
             eventEndTime: data['endDateTime'],
             photoUrls: photoUrls,
             description: data['description'],
+            isChatPublic: data['isChatPublic'] == true,
           ),
         );
       } else {

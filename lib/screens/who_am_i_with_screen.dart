@@ -20,9 +20,11 @@ class WhoAmIWithScreen extends StatelessWidget {
         listener: (context, state) async {
           if (state is WhoAmIWithLoaded && state.saved) {
             await Future.delayed(Duration(seconds: 1));
+            if (!context.mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(AppLocalizations.of(context)!.save)),
             );
+            if (!context.mounted) return;
             Navigator.of(context).pop();
           }
         },

@@ -1,27 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wtho/bloc/app/app_bloc.dart';
-import '../bloc/app/app_event.dart';
-import '../bloc/auth/auth_bloc.dart';
-import '../bloc/auth/auth_event.dart';
 import '../bloc/profile/profile_bloc.dart';
 import '../bloc/profile/profile_event.dart';
 import '../bloc/profile/profile_state.dart';
 import '../l10n/app_localizations.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import '../services/geolocation_service.dart';
-import 'package:geolocator/geolocator.dart';
-import 'dart:io';
-
-import '../routes/app_routes.dart';
-import '../services/navigation_service.dart';
 import '../bloc/location/location_bloc.dart';
 import '../bloc/location/location_state.dart';
 import '../bloc/settings/settings_bloc.dart';
 import '../screens/settings_screen.dart';
-import '../source/image_utils.dart';
-import '../screens/support_us_screen.dart';
+import '../screens/edit_profile_screen.dart';
+import 'dart:io';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -57,6 +45,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.edit),
+            tooltip: AppLocalizations.of(context)!.edit_profile_title,
+            onPressed: () async {
+              final result = await Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => EditProfileScreen()),
+              );
+              if (result == true) {
+                context.read<ProfileBloc>().add(ProfileLoadRequested());
+              }
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => BlocProvider.value(
+                    value: context.read<SettingsBloc>(),
+                    child: const SettingsScreen(),
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Container(
         color: Colors.white,
@@ -202,39 +217,58 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         }
                       },
                     ),
-                    const SizedBox(height: 32),
-                    ListTile(
-                      leading: const Icon(Icons.settings),
-                      title: Text(AppLocalizations.of(context)!.settings),
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => BlocProvider.value(
-                              value: context.read<SettingsBloc>(),
-                              child: const SettingsScreen(),
+                    if (state is ProfileLoaded &&
+                        state.about != null &&
+                        state.about!.isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      Text(
+                        state.about!,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                    if (state is ProfileLoaded &&
+                        state.photoUrls != null &&
+                        state.photoUrls!.isNotEmpty) ...[
+                      const SizedBox(height: 16),
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: state.photoUrls!.length > 3
+                            ? 3
+                            : state.photoUrls!.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              mainAxisSpacing: 6,
+                              crossAxisSpacing: 6,
+                              childAspectRatio: 1,
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.favorite),
-                      title: Text(AppLocalizations.of(context)!.support_us),
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const SupportUsScreen(),
-                          ),
-                        );
-                      },
-                    ),
-                    ListTile(
-                      leading: const Icon(Icons.logout),
-                      title: Text(AppLocalizations.of(context)!.logout),
-                      onTap: () {
-                        context.read<AuthBloc>().add(AuthLogoutRequested());
-                      },
-                    ),
+                        itemBuilder: (context, i) {
+                          final url = state.photoUrls![i];
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                      _FullScreenImageViewer(imageUrl: url),
+                                ),
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: url.startsWith('http')
+                                  ? Image.network(url, fit: BoxFit.cover)
+                                  : Image.file(File(url), fit: BoxFit.cover),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                    const SizedBox(height: 32),
                   ],
                 );
               } else if (state is ProfileError) {
@@ -245,6 +279,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _FullScreenImageViewer extends StatelessWidget {
+  final String imageUrl;
+  const _FullScreenImageViewer({required this.imageUrl});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.white),
+        elevation: 0,
+      ),
+      body: Center(
+        child: imageUrl.startsWith('http')
+            ? Image.network(imageUrl, fit: BoxFit.contain)
+            : Image.file(File(imageUrl), fit: BoxFit.contain),
       ),
     );
   }

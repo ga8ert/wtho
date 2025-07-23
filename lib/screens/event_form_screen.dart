@@ -150,196 +150,336 @@ class _EventFormBody extends StatelessWidget {
                         icon: Icons.event,
                         value: state.type.isNotEmpty ? state.type : null,
                         items: [
-                          DropdownMenuItem(
-                            value: 'event_type_aquapark',
+                          // Соціальні / туса
+                          DropdownMenuItem<String>(
+                            enabled: false,
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_aquapark_emoji}  ${AppLocalizations.of(context)!.event_type_aquapark}',
+                              AppLocalizations.of(context)!.event_group_social,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_art_gallery',
+                            value: 'event_type_social_bar',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_art_gallery_emoji}  ${AppLocalizations.of(context)!.event_type_art_gallery}',
+                              '${AppLocalizations.of(context)!.event_type_social_bar_emoji}  ${AppLocalizations.of(context)!.event_type_social_bar}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_bbq',
+                            value: 'event_type_social_hangout',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_bbq_emoji}  ${AppLocalizations.of(context)!.event_type_bbq}',
+                              '${AppLocalizations.of(context)!.event_type_social_hangout_emoji}  ${AppLocalizations.of(context)!.event_type_social_hangout}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_bowling',
+                            value: 'event_type_social_neighbors',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_bowling_emoji}  ${AppLocalizations.of(context)!.event_type_bowling}',
+                              '${AppLocalizations.of(context)!.event_type_social_neighbors_emoji}  ${AppLocalizations.of(context)!.event_type_social_neighbors}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_library',
+                            value: 'event_type_social_coffee',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_library_emoji}  ${AppLocalizations.of(context)!.event_type_library}',
+                              '${AppLocalizations.of(context)!.event_type_social_coffee_emoji}  ${AppLocalizations.of(context)!.event_type_social_coffee}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_bike',
+                            value: 'event_type_social_newcomers',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_bike_emoji}  ${AppLocalizations.of(context)!.event_type_bike}',
+                              '${AppLocalizations.of(context)!.event_type_social_newcomers_emoji}  ${AppLocalizations.of(context)!.event_type_social_newcomers}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_boardgames',
+                            value: 'event_type_social_introverts',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_boardgames_emoji}  ${AppLocalizations.of(context)!.event_type_boardgames}',
+                              '${AppLocalizations.of(context)!.event_type_social_introverts_emoji}  ${AppLocalizations.of(context)!.event_type_social_introverts}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_exhibition',
+                            value: 'event_type_social_movie_pizza',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_exhibition_emoji}  ${AppLocalizations.of(context)!.event_type_exhibition}',
+                              '${AppLocalizations.of(context)!.event_type_social_movie_pizza_emoji}  ${AppLocalizations.of(context)!.event_type_social_movie_pizza}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_gastro',
+                            value: 'event_type_social_memes_tea',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_gastro_emoji}  ${AppLocalizations.of(context)!.event_type_gastro}',
+                              '${AppLocalizations.of(context)!.event_type_social_memes_tea_emoji}  ${AppLocalizations.of(context)!.event_type_social_memes_tea}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_beach',
+                            value: 'event_type_social_talk',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_beach_emoji}  ${AppLocalizations.of(context)!.event_type_beach}',
+                              '${AppLocalizations.of(context)!.event_type_social_talk_emoji}  ${AppLocalizations.of(context)!.event_type_social_talk}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_yoga',
+                            value: 'event_type_social_relax',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_yoga_emoji}  ${AppLocalizations.of(context)!.event_type_yoga}',
+                              '${AppLocalizations.of(context)!.event_type_social_relax_emoji}  ${AppLocalizations.of(context)!.event_type_social_relax}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                          // Активність / спорт
+                          DropdownMenuItem<String>(
+                            enabled: false,
+                            child: Text(
+                              AppLocalizations.of(context)!.event_group_sport,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_karaoke',
+                            value: 'event_type_sport_company',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_karaoke_emoji}  ${AppLocalizations.of(context)!.event_type_karaoke}',
+                              '${AppLocalizations.of(context)!.event_type_sport_company_emoji}  ${AppLocalizations.of(context)!.event_type_sport_company}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_karting',
+                            value: 'event_type_sport_play',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_karting_emoji}  ${AppLocalizations.of(context)!.event_type_karting}',
+                              '${AppLocalizations.of(context)!.event_type_sport_play_emoji}  ${AppLocalizations.of(context)!.event_type_sport_play}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_quest',
+                            value: 'event_type_sport_gym',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_quest_emoji}  ${AppLocalizations.of(context)!.event_type_quest}',
+                              '${AppLocalizations.of(context)!.event_type_sport_gym_emoji}  ${AppLocalizations.of(context)!.event_type_sport_gym}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_coworking',
+                            value: 'event_type_sport_morning',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_coworking_emoji}  ${AppLocalizations.of(context)!.event_type_coworking}',
+                              '${AppLocalizations.of(context)!.event_type_sport_morning_emoji}  ${AppLocalizations.of(context)!.event_type_sport_morning}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_concert',
+                            value: 'event_type_sport_trip',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_concert_emoji}  ${AppLocalizations.of(context)!.event_type_concert}',
+                              '${AppLocalizations.of(context)!.event_type_sport_trip_emoji}  ${AppLocalizations.of(context)!.event_type_sport_trip}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_lasertag',
+                            value: 'event_type_sport_beach',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_lasertag_emoji}  ${AppLocalizations.of(context)!.event_type_lasertag}',
+                              '${AppLocalizations.of(context)!.event_type_sport_beach_emoji}  ${AppLocalizations.of(context)!.event_type_sport_beach}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_picnic',
+                            value: 'event_type_sport_dog',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_picnic_emoji}  ${AppLocalizations.of(context)!.event_type_picnic}',
+                              '${AppLocalizations.of(context)!.event_type_sport_dog_emoji}  ${AppLocalizations.of(context)!.event_type_sport_dog}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_masterclass',
+                            value: 'event_type_sport_cafe',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_masterclass_emoji}  ${AppLocalizations.of(context)!.event_type_masterclass}',
+                              '${AppLocalizations.of(context)!.event_type_sport_cafe_emoji}  ${AppLocalizations.of(context)!.event_type_sport_cafe}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                          // Настолки / розваги
+                          DropdownMenuItem<String>(
+                            enabled: false,
+                            child: Text(
+                              AppLocalizations.of(context)!.event_group_games,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_museum',
+                            value: 'event_type_games_board',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_museum_emoji}  ${AppLocalizations.of(context)!.event_type_museum}',
+                              '${AppLocalizations.of(context)!.event_type_games_board_emoji}  ${AppLocalizations.of(context)!.event_type_games_board}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_movie',
+                            value: 'event_type_games_night',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_movie_emoji}  ${AppLocalizations.of(context)!.event_type_movie}',
+                              '${AppLocalizations.of(context)!.event_type_games_night_emoji}  ${AppLocalizations.of(context)!.event_type_games_night}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_ferris',
+                            value: 'event_type_games_standup',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_ferris_emoji}  ${AppLocalizations.of(context)!.event_type_ferris}',
+                              '${AppLocalizations.of(context)!.event_type_games_standup_emoji}  ${AppLocalizations.of(context)!.event_type_games_standup}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_pub',
+                            value: 'event_type_games_karaoke',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_pub_emoji}  ${AppLocalizations.of(context)!.event_type_pub}',
+                              '${AppLocalizations.of(context)!.event_type_games_karaoke_emoji}  ${AppLocalizations.of(context)!.event_type_games_karaoke}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_park',
+                            value: 'event_type_games_cook',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_park_emoji}  ${AppLocalizations.of(context)!.event_type_park}',
+                              '${AppLocalizations.of(context)!.event_type_games_cook_emoji}  ${AppLocalizations.of(context)!.event_type_games_cook}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_hiking',
+                            value: 'event_type_games_creative',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_hiking_emoji}  ${AppLocalizations.of(context)!.event_type_hiking}',
+                              '${AppLocalizations.of(context)!.event_type_games_creative_emoji}  ${AppLocalizations.of(context)!.event_type_games_creative}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_restaurant',
+                            value: 'event_type_games_language',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_restaurant_emoji}  ${AppLocalizations.of(context)!.event_type_restaurant}',
+                              '${AppLocalizations.of(context)!.event_type_games_language_emoji}  ${AppLocalizations.of(context)!.event_type_games_language}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_skating',
+                            value: 'event_type_games_quest',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_skating_emoji}  ${AppLocalizations.of(context)!.event_type_skating}',
+                              '${AppLocalizations.of(context)!.event_type_games_quest_emoji}  ${AppLocalizations.of(context)!.event_type_games_quest}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ),
+                          // Спокійні
+                          DropdownMenuItem<String>(
+                            enabled: false,
+                            child: Text(
+                              AppLocalizations.of(context)!.event_group_chill,
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_safari',
+                            value: 'event_type_chill_picnic',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_safari_emoji}  ${AppLocalizations.of(context)!.event_type_safari}',
+                              '${AppLocalizations.of(context)!.event_type_chill_picnic_emoji}  ${AppLocalizations.of(context)!.event_type_chill_picnic}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_gym',
+                            value: 'event_type_chill_yard',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_gym_emoji}  ${AppLocalizations.of(context)!.event_type_gym}',
+                              '${AppLocalizations.of(context)!.event_type_chill_yard_emoji}  ${AppLocalizations.of(context)!.event_type_chill_yard}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_party',
+                            value: 'event_type_chill_morning_coffee',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_party_emoji}  ${AppLocalizations.of(context)!.event_type_party}',
+                              '${AppLocalizations.of(context)!.event_type_chill_morning_coffee_emoji}  ${AppLocalizations.of(context)!.event_type_chill_morning_coffee}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                           DropdownMenuItem(
-                            value: 'event_type_private',
+                            value: 'event_type_chill_blanket',
                             child: Text(
-                              '${AppLocalizations.of(context)!.event_type_private_emoji}  ${AppLocalizations.of(context)!.event_type_private}',
-                            ),
-                          ),
-                          DropdownMenuItem(
-                            value: 'event_type_other',
-                            child: Text(
-                              '${AppLocalizations.of(context)!.event_type_other_emoji}  ${AppLocalizations.of(context)!.event_type_other}',
+                              '${AppLocalizations.of(context)!.event_type_chill_blanket_emoji}  ${AppLocalizations.of(context)!.event_type_chill_blanket}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                fontStyle: FontStyle.italic,
+                              ),
                             ),
                           ),
                         ],
@@ -768,53 +908,101 @@ class _RoundedAddUsers extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
     final uid = user?.uid;
     final selectedFriendsCount = state.userIds.where((id) => id != uid).length;
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(30),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      child: Row(
-        children: [
-          const Icon(Icons.group, color: Colors.grey),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              selectedFriendsCount > 0
-                  ? AppLocalizations.of(
-                      context,
-                    )!.users_added(selectedFriendsCount)
-                  : AppLocalizations.of(context)!.no_users_selected,
-              style: const TextStyle(fontSize: 15),
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.grey[100],
+            borderRadius: BorderRadius.circular(30),
           ),
-          TextButton(
-            onPressed: () async {
-              if (uid == null) {
-                context.read<EventFormCubit>().setUserIds([]);
-                return;
-              }
-              final List<String>? picked = await Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => BlocProvider.value(
-                    value: context.read<FriendsBloc>(),
-                    child: FriendPickerScreen(
-                      userId: uid,
-                      initiallySelected: state.userIds,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          child: Row(
+            children: [
+              const Icon(Icons.group, color: Colors.grey),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  selectedFriendsCount > 0
+                      ? AppLocalizations.of(
+                          context,
+                        )!.users_added(selectedFriendsCount)
+                      : AppLocalizations.of(context)!.no_users_selected,
+                  style: const TextStyle(fontSize: 15),
+                ),
+              ),
+              TextButton(
+                onPressed: () async {
+                  if (uid == null) {
+                    context.read<EventFormCubit>().setUserIds([]);
+                    return;
+                  }
+                  final List<String>? picked = await Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => BlocProvider.value(
+                        value: context.read<FriendsBloc>(),
+                        child: FriendPickerScreen(
+                          userId: uid,
+                          initiallySelected: state.userIds,
+                        ),
+                      ),
                     ),
+                  );
+                  if (picked != null &&
+                      picked.isNotEmpty &&
+                      picked.any((id) => id != uid)) {
+                    context.read<EventFormCubit>().setUserIds(picked);
+                  }
+                },
+                child: Text(AppLocalizations.of(context)!.add_users),
+              ),
+            ],
+          ),
+        ),
+        SwitchListTile(
+          value: state.isChatPublic,
+          onChanged: (v) async {
+            if (v) {
+              final confirmed = await showDialog<bool>(
+                context: context,
+                builder: (ctx) => AlertDialog(
+                  title: Text(AppLocalizations.of(context)!.confirm),
+                  content: Text(
+                    AppLocalizations.of(context)!.public_chat_confirm,
                   ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.of(ctx).pop(false),
+                      child: Text(AppLocalizations.of(context)!.cancel),
+                    ),
+                    TextButton(
+                      onPressed: () => Navigator.of(ctx).pop(true),
+                      child: Text(AppLocalizations.of(context)!.confirm),
+                    ),
+                  ],
                 ),
               );
-              if (picked != null &&
-                  picked.isNotEmpty &&
-                  picked.any((id) => id != uid)) {
-                context.read<EventFormCubit>().setUserIds(picked);
+              if (confirmed == true) {
+                context.read<EventFormCubit>().setIsChatPublic(true);
               }
-            },
-            child: Text(AppLocalizations.of(context)!.add_users),
+            } else {
+              context.read<EventFormCubit>().setIsChatPublic(false);
+            }
+          },
+          title: Text(
+            state.isChatPublic
+                ? AppLocalizations.of(context)!.public_chat_title
+                : AppLocalizations.of(context)!.private_chat_title,
+            style: const TextStyle(fontSize: 15),
           ),
-        ],
-      ),
+          subtitle: Text(
+            state.isChatPublic
+                ? AppLocalizations.of(context)!.public_chat_subtitle
+                : AppLocalizations.of(context)!.private_chat_subtitle,
+            style: const TextStyle(fontSize: 13),
+          ),
+        ),
+      ],
     );
   }
 }
